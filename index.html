@@ -6,7 +6,7 @@
 <title>Наші зустрічі</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;700;800&family=Golos+Text:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -62,8 +62,8 @@
 }
 
 html{scroll-behavior:smooth}
-body{font-family:'Golos Text',sans-serif;background:var(--bg);color:var(--text);line-height:1.65;min-height:100vh;transition:background var(--t),color var(--t);-webkit-font-smoothing:antialiased}
-h1,h2,h3,h4{font-family:'Geologica',sans-serif;letter-spacing:-.025em;line-height:1.2}
+body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--text);line-height:1.65;min-height:100vh;transition:background var(--t),color var(--t);-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:'Onest',sans-serif;letter-spacing:-.025em;line-height:1.2}
 
 ::-webkit-scrollbar{width:5px;height:5px}
 ::-webkit-scrollbar-track{background:transparent}
@@ -87,13 +87,13 @@ h1,h2,h3,h4{font-family:'Geologica',sans-serif;letter-spacing:-.025em;line-heigh
   box-shadow:0 0 12px var(--accent-glow);
 }
 .logo-mark svg{color:#fff}
-.logo-name{font-family:'Geologica',sans-serif;font-weight:600;font-size:16px}
+.logo-name{font-family:'Onest',sans-serif;font-weight:600;font-size:16px}
 .logo-name span{color:var(--text-2);font-weight:400}
 
 .header-right{display:flex;align-items:center;gap:8px}
 
 .year-toggle{display:flex;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--r-sm);padding:3px;gap:2px}
-.year-btn{font-family:'Geologica',sans-serif;font-size:13px;font-weight:600;padding:5px 16px;border:none;border-radius:7px;cursor:pointer;background:transparent;color:var(--text-2);transition:all var(--t)}
+.year-btn{font-family:'Onest',sans-serif;font-size:13px;font-weight:600;padding:5px 16px;border:none;border-radius:7px;cursor:pointer;background:transparent;color:var(--text-2);transition:all var(--t)}
 .year-btn:hover{color:var(--text)}
 .year-btn.active{background:var(--accent);color:#fff;box-shadow:0 2px 8px var(--accent-glow)}
 
@@ -113,7 +113,7 @@ h1,h2,h3,h4{font-family:'Geologica',sans-serif;letter-spacing:-.025em;line-heigh
 .quote-ticker:hover{animation-play-state:paused}
 @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 .quote-item{display:inline-flex;align-items:center;gap:12px;padding:0 48px;color:var(--text-2);font-size:13px;font-style:italic}
-.quote-item strong{color:var(--accent-2);font-style:normal;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-family:'Geologica',sans-serif}
+.quote-item strong{color:var(--accent-2);font-style:normal;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-family:'Onest',sans-serif}
 .quote-sep{color:var(--border-2);font-size:20px;line-height:1}
 
 /* ── HERO ── */
@@ -143,7 +143,7 @@ h1,h2,h3,h4{font-family:'Geologica',sans-serif;letter-spacing:-.025em;line-heigh
   border:1px solid color-mix(in srgb,var(--accent) 40%,var(--border));
   border-radius:100px;
   color:var(--accent-2);
-  font-size:15px;font-weight:600;font-family:'Geologica',sans-serif;
+  font-size:15px;font-weight:600;font-family:'Onest',sans-serif;
   cursor:pointer;
   transition:all var(--t);
 }
@@ -161,6 +161,19 @@ h1,h2,h3,h4{font-family:'Geologica',sans-serif;letter-spacing:-.025em;line-heigh
 .find-me-btn.selected:hover{
   box-shadow:0 4px 16px var(--accent-glow);
 }
+.find-me-wrap{
+  display:inline-flex;align-items:center;gap:10px;margin-top:28px;
+}
+.find-me-clear{
+  width:30px;height:30px;border-radius:50%;
+  background:var(--surface-2);border:1px solid var(--border-2);
+  color:var(--text-2);font-size:18px;line-height:1;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:all var(--t);flex-shrink:0;
+}
+.find-me-clear:hover{background:var(--red-dim);border-color:var(--red);color:var(--red);}
+/* override margin-top since wrapper handles it */
+.find-me-wrap .find-me-btn{margin-top:0;}
 
 /* ── KPI ── */
 .kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin-bottom:56px}
@@ -176,7 +189,7 @@ h1,h2,h3,h4{font-family:'Geologica',sans-serif;letter-spacing:-.025em;line-heigh
 .kpi-icon.c-green{background:var(--green-dim);color:var(--green)}
 .kpi-icon.c-amber{background:var(--amber-dim);color:var(--amber)}
 .kpi-label{font-size:12px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--text-2);margin-bottom:8px}
-.kpi-val{font-family:'Geologica',sans-serif;font-size:42px;font-weight:700;line-height:1;color:var(--text);margin-bottom:4px}
+.kpi-val{font-family:'JetBrains Mono',monospace;font-size:38px;font-weight:700;line-height:1;color:var(--text);margin-bottom:4px}
 .kpi-sub{font-size:13px;color:var(--text-2)}
 
 /* ── SECTIONS ── */
@@ -223,25 +236,11 @@ h1,h2,h3,h4{font-family:'Geologica',sans-serif;letter-spacing:-.025em;line-heigh
   writing-mode:vertical-lr;
   transform:rotate(180deg);
   height:72px;
-  font-size:10px;font-weight:500;color:var(--text-2);
+  font-size:10px;font-weight:600;color:var(--text);
   white-space:nowrap;
   padding-bottom:4px;
 }
-/* Bottom date footer cells */
-.hm-date-td-bot{
-  padding:2px;
-  vertical-align:top;
-  text-align:center;
-  min-width:26px;width:26px;
-}
-.hm-date-inner-bot{
-  display:flex;align-items:flex-start;justify-content:center;
-  writing-mode:vertical-lr;
-  height:72px;
-  font-size:10px;font-weight:500;color:var(--text-2);
-  white-space:nowrap;
-  padding-top:4px;
-}
+/* bottom date row removed */
 
 /* Name col */
 .hm-name-th{
@@ -307,8 +306,8 @@ h1,h2,h3,h4{font-family:'Geologica',sans-serif;letter-spacing:-.025em;line-heigh
 .pcard:hover{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-dim);transform:translateY(-2px)}
 
 .pcard-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px}
-.pcard-name{font-family:'Geologica',sans-serif;font-size:15px;font-weight:600;color:var(--text)}
-.pcard-rate{font-family:'Geologica',sans-serif;font-size:36px;font-weight:700;line-height:1;margin-bottom:4px}
+.pcard-name{font-family:'Onest',sans-serif;font-size:15px;font-weight:600;color:var(--text)}
+.pcard-rate{font-family:'JetBrains Mono',monospace;font-size:34px;font-weight:700;line-height:1;margin-bottom:4px}
 .pcard-rate.g-high{color:var(--green)}
 .pcard-rate.g-mid{color:var(--amber)}
 .pcard-rate.g-low{color:var(--text-2)}
@@ -352,15 +351,15 @@ h1,h2,h3,h4{font-family:'Geologica',sans-serif;letter-spacing:-.025em;line-heigh
   color:var(--text-2);transition:all var(--t);flex-shrink:0;
 }
 .modal-close:hover{color:var(--text);border-color:var(--border-2)}
-.modal-name{font-family:'Geologica',sans-serif;font-size:26px;font-weight:700}
+.modal-name{font-family:'Onest',sans-serif;font-size:26px;font-weight:700}
 .modal-body{padding:0 28px 28px}
 
-.modal-stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px}
+.modal-stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:24px}
 .modal-stat{
   background:var(--surface-2);border:1px solid var(--border);border-radius:var(--r-sm);
   padding:16px;text-align:center;
 }
-.modal-stat-val{font-family:'Geologica',sans-serif;font-size:28px;font-weight:700;line-height:1;margin-bottom:4px}
+.modal-stat-val{font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:700;line-height:1;margin-bottom:4px}
 .modal-stat-val.c-green{color:var(--green)}
 .modal-stat-val.c-amber{color:var(--amber)}
 .modal-stat-lbl{font-size:11px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--text-3)}
@@ -438,7 +437,7 @@ h1,h2,h3,h4{font-family:'Geologica',sans-serif;letter-spacing:-.025em;line-heigh
   .modal-body{padding:0 20px 20px}
   .modal-name{font-size:20px}
   .modal-stat-row{gap:8px}
-  .modal-stat-val{font-size:22px}
+  .modal-stat-val{font-size:18px}
   .modal-chart-wrap{height:130px}
 
   .logo-name span{display:none}
@@ -455,7 +454,8 @@ h1,h2,h3,h4{font-family:'Geologica',sans-serif;letter-spacing:-.025em;line-heigh
   .hero-title{font-size:clamp(26px,8vw,38px)}
   .hero-sub{font-size:14px}
   .hero-quote{font-size:13px;padding:8px 0 8px 14px}
-  .find-me-btn{width:100%;justify-content:center;font-size:14px;padding:13px 20px}
+  .find-me-wrap{width:100%}
+  .find-me-wrap .find-me-btn{flex:1;justify-content:center;font-size:14px;padding:13px 20px}
 
   .kpi-grid{grid-template-columns:1fr 1fr;gap:8px;margin-bottom:32px}
   .kpi-card{padding:14px}
@@ -570,10 +570,13 @@ h1,h2,h3,h4{font-family:'Geologica',sans-serif;letter-spacing:-.025em;line-heigh
       «Не дамо припинитися нашим зустрічам, як то дехто намагається. Навпаки, підтримуймо одне одного дедалі дужче. Адже ми бачимо, як наближається День.»
       <cite>До Євреїв 10:25</cite>
     </blockquote>
-    <button class="find-me-btn" onclick="openFindMe()" id="find-me-btn">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      <span id="find-me-label">Знайди себе у списку</span>
-    </button>
+    <div class="find-me-wrap" id="find-me-wrap">
+      <button class="find-me-btn" onclick="openFindMe()" id="find-me-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <span id="find-me-label">Знайди себе у списку</span>
+      </button>
+      <button class="find-me-clear" id="find-me-clear" onclick="clearMe()" title="Скинути вибір" style="display:none">×</button>
+    </div>
   </div></section>
 
   <!-- KPI -->
@@ -671,8 +674,8 @@ h1,h2,h3,h4{font-family:'Geologica',sans-serif;letter-spacing:-.025em;line-heigh
 
 <script>
 // ── Google Sheets Live Data ──
-const SHEET_2025 = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS_bexjwScluBFUXSEfHUzUpsxXCY1Ls0dyztc_OL4W3PbMJYVFKje2U4rTikn9HqpWULpGqAFsoBlS/pub?gid=391645348&single=true&output=csv';
-const SHEET_2026 = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS_bexjwScluBFUXSEfHUzUpsxXCY1Ls0dyztc_OL4W3PbMJYVFKje2U4rTikn9HqpWULpGqAFsoBlS/pub?gid=0&single=true&output=csv';
+const SHEET_2025 = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS_bexjwScluBFUXSEfHUzUpsxXCY1Ls0dyztc_OL4W3PbMJYVFKje2U4rTikn9HqpWULpGqAFsoBlS/pub?gid=0&single=true&output=csv';
+const SHEET_2026 = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS_bexjwScluBFUXSEfHUzUpsxXCY1Ls0dyztc_OL4W3PbMJYVFKje2U4rTikn9HqpWULpGqAFsoBlS/pub?gid=391645348&single=true&output=csv';
 
 function parseCSV(text) {
   // Split rows, handle quoted cells with commas
@@ -754,8 +757,27 @@ async function loadSheets() {
       fetch(SHEET_2025).then(r => { if(!r.ok) throw new Error(r.status); return r.text(); }),
       fetch(SHEET_2026).then(r => { if(!r.ok) throw new Error(r.status); return r.text(); }),
     ]);
-    const fresh2025 = sheetToData(csv2025);
-    const fresh2026 = sheetToData(csv2026);
+    const sheetA = sheetToData(csv2025);
+    const sheetB = sheetToData(csv2026);
+
+    // Detect which sheet belongs to which year by checking the dates themselves
+    // This prevents mix-ups regardless of GID order
+    const yearOfA = sheetA.dates.length ? sheetA.dates[0].slice(0,4) : null;
+    const yearOfB = sheetB.dates.length ? sheetB.dates[0].slice(0,4) : null;
+
+    let fresh2025, fresh2026;
+    if(yearOfA==='2025' && yearOfB==='2026') {
+      fresh2025=sheetA; fresh2026=sheetB;
+    } else if(yearOfA==='2026' && yearOfB==='2025') {
+      // sheets were swapped — correct automatically
+      fresh2025=sheetB; fresh2026=sheetA;
+      console.warn('⚠ Sheet GIDs were swapped — auto-corrected by date detection');
+    } else {
+      // fallback: use whichever has more 2025 dates
+      fresh2025 = (yearOfA==='2025' ? sheetA : sheetB);
+      fresh2026 = (yearOfB==='2026' ? sheetB : sheetA);
+    }
+
     // Only update if we got real data
     if(fresh2025.dates.length > 0 || fresh2026.dates.length > 0) {
       DATA = { '2025': fresh2025.dates.length ? fresh2025 : FALLBACK_DATA['2025'],
@@ -783,9 +805,24 @@ const pct = r => Math.round((r||0)*100);
 const cleanDate = d => d.includes('__dup') ? d.split('__')[0] : d;
 
 const QUOTES = [
-  {text:'«Не дамо припинитися нашим зустрічам, навпаки, підтримуймо одне одного дедалі дужче»', ref:'Євр. 10:25'},
-  {text:'«Погляньте, як чудово і приємно, коли брати живуть у злагоді і мирі!»', ref:'Пс. 133:1'},
-  {text:'«Господніх заповітів хто додержує — благий, до Господа всім серцем прагне — той щасливий»', ref:'Пс. 119:2'},
+  {text:'Христос не врятував тебе тому, що ти хороший — Він просить тебе бути хорошим, бо Він спас тебе.'},
+  {text:'Не суди іншого за те, що він грішить не так, як ти.'},
+  {text:'Як поживає твоя душа?'},
+  {text:'Кращий спосіб підняти собі настрій — підняти його комусь іншому.'},
+  {text:'Коли ти любиш тих, хто не любить тебе, ти краєм ока бачиш, що робить Бог для тебе.'},
+  {text:'Бог дав нам різноманіття, тому що Він великий прихильник смирення.'},
+  {text:'Бог бере вірних і робить їх здібними.'},
+  {text:'Якщо ти думаєш, що Бог забув тебе — ти просто забув, хто такий Бог.'},
+  {text:'Шукати волі Божої — не означає прислухатися до своїх почуттів. Це означає пізнавати й застосовувати Біблію.'},
+  {text:'Не будь невдоволений нижніми сходинками — вони допомагають тобі піднятися вище.'},
+  {text:'Кожного дня ти стаєш або більш схожим на Ісуса, або менш схожим на Нього.'},
+  {text:'Не будь християнином, що виріс у Церкві, але так і не виріс у Христі.'},
+  {text:'Живи так, ніби Христос помер вчора, воскрес сьогодні вранці, а завтра повернеться.'},
+  {text:'Ми думаємо, що Бог бачить нас зверху — але Він бачить нас зсередини.'},
+  {text:'Успішні люди постійні в тому, що інші роблять лише по настрою.'},
+  {text:'Час — це книга, яку Бог поклав у твої руки. Чи ти уважно читаєш кожну сторінку?'},
+  {text:'«Не дамо припинитися нашим зустрічам — підтримуймо одне одного дедалі дужче»', ref:'Євр. 10:25'},
+  {text:'«Як чудово і приємно, коли брати живуть у злагоді і мирі!»', ref:'Пс. 133:1'},
 ];
 
 // ─ Compute ─
@@ -897,11 +934,6 @@ function renderHeatmap(s) {
     const display = d.includes('__dup') ? fmt(d.split('__')[0])+'*' : fmt(d);
     return `<th class="hm-date-th"><div class="hm-date-inner">${display}</div></th>`;
   }).join('');
-  const dateFoot = s.dates.map(d=>{
-    const display = d.includes('__dup') ? fmt(d.split('__')[0])+'*' : fmt(d);
-    return `<td class="hm-date-td-bot"><div class="hm-date-inner-bot">${display}</div></td>`;
-  }).join('');
-
   const rows = sorted.map(p=>{
     const cells = p.entries.map(e=>{
       if(e.val===1) return `<td class="hm-cell-td"><div class="hm-dot-cell c-present" title="${p.name} · ${fmtLong(cleanDate(e.date))} · Присутній"></div></td>`;
@@ -919,7 +951,6 @@ function renderHeatmap(s) {
     <table class="hm-table">
       <thead><tr><th class="hm-name-th"></th>${dateHeader}</tr></thead>
       <tbody>${rows}</tbody>
-      <tfoot><tr><td class="hm-name-th"></td>${dateFoot}</tr></tfoot>
     </table>`;
 }
 
@@ -970,12 +1001,46 @@ function openModal(name) {
   const present = active.filter(e=>e.val===1);
   const r = p.isInactive ? null : p.rate;
 
+  // Extended stats
+  const allStats = compute(year).personStats;
+  const ranked = [...allStats].filter(x=>x.rate!==null).sort((a,b)=>(b.rate||0)-(a.rate||0));
+  const rank = ranked.findIndex(x=>x.name===name)+1;
+  const rankStr = rank>0 ? '#'+rank+' з '+ranked.length : '—';
+
+  // Best month
+  const monthTotals = {};
+  p.entries.forEach(e=>{
+    if(e.val===null||e.val===undefined) return;
+    const m = e.date.slice(0,7);
+    if(!monthTotals[m]) monthTotals[m]={p:0,t:0};
+    monthTotals[m].t++;
+    if(e.val===1) monthTotals[m].p++;
+  });
+  let bestMonth='—', bestRate=-1;
+  Object.entries(monthTotals).forEach(([m,v])=>{
+    if(v.t>=2 && v.p/v.t>bestRate){ bestRate=v.p/v.t; bestMonth=months[+m.slice(5)]+' '+m.slice(0,4); }
+  });
+
+  // Max consecutive presence streak
+  const activeValsForStreak = active.map(e=>e.val);
+  let maxStreak=0, curS=0;
+  activeValsForStreak.forEach(v=>{ if(v===1){curS++;maxStreak=Math.max(maxStreak,curS);}else curS=0; });
+
+  // Current trailing streak (misses in a row at end)
+  let curMiss=0;
+  for(let i=activeValsForStreak.length-1;i>=0;i--){
+    if(activeValsForStreak[i]===0) curMiss++; else break;
+  }
+
   document.getElementById('modal-stats').innerHTML = [
     {val: r===null?'—':pct(r)+'%', lbl:'Відвідуваність', cls: r===null?'':r>=.75?'c-green':'c-amber'},
-    {val: present.length, lbl:'Разів відвідав', cls:'c-green'},
-    {val: active.length, lbl:'Зустрічей загалом', cls:''},
+    {val: present.length+'/'+active.length, lbl:'Присутній / Всього', cls:'c-green'},
+    {val: rankStr, lbl:'Місце в групі', cls: rank===1?'c-green':rank<=3?'c-amber':''},
+    {val: maxStreak>0?maxStreak+'🔥':'—', lbl:'Найдовша серія', cls:''},
+    {val: curMiss>0?curMiss+' пропуск'+(curMiss===1?'':'ів'):'✓ В стрічці', lbl:'Зараз', cls:curMiss===0?'c-green':curMiss>=3?'c-amber':''},
+    {val: bestMonth, lbl:'Кращий місяць', cls:''},
   ].map(c=>`<div class="modal-stat">
-    <div class="modal-stat-val ${c.cls}">${c.val}</div>
+    <div class="modal-stat-val ${c.cls}" style="font-size:clamp(16px,3.5vw,24px);word-break:break-word">${c.val}</div>
     <div class="modal-stat-lbl">${c.lbl}</div>
   </div>`).join('');
 
@@ -1025,15 +1090,15 @@ function openModal(name) {
     return `<div class="tl-item"><div class="tl-dot ${cls}" title="${fmtLong(cleanDate(e.date))}"></div><span>${label}</span></div>`;
   }).join('');
 
-  // Encouragement
-  const encourage = r===null
-    ? {text:QUOTES[0].text, ref:QUOTES[0].ref}
-    : r>=.75
-    ? {text:'«Погляньте, як чудово і приємно, коли брати живуть у злагоді і мирі!»', ref:'Пс. 133:1'}
-    : r>=.5
-    ? {text:'«Господніх заповітів хто додержує — благий, до Господа всім серцем прагне — той щасливий»', ref:'Пс. 119:2'}
-    : {text:'«Не дамо припинитися нашим зустрічам, навпаки, підтримуймо одне одного дедалі дужче»', ref:'Євр. 10:25'};
-  document.getElementById('modal-encourage').innerHTML = `${encourage.text}<cite>${encourage.ref}</cite>`;
+  // Random personalized quote – changes per name+time combo
+  // Different per person, advances each click
+  if(!openModal._clicks) openModal._clicks = {};
+  openModal._clicks[name] = ((openModal._clicks[name] || 0) + 1);
+  const nameHash = name.split('').reduce((a,c)=>a+c.charCodeAt(0),0);
+  const qSeed = (nameHash + openModal._clicks[name]) % QUOTES.length;
+  const encourage = QUOTES[qSeed];
+  document.getElementById('modal-encourage').innerHTML =
+    `${encourage.text}${encourage.ref ? '<cite>'+encourage.ref+'</cite>' : ''}`;
 
   document.getElementById('modal').classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -1145,14 +1210,23 @@ let myName = localStorage.getItem('attendance_myname') || null;
 function updateFindMeBtn(){
   const btn = document.getElementById('find-me-btn');
   const lbl = document.getElementById('find-me-label');
+  const clr = document.getElementById('find-me-clear');
   if(!btn) return;
   if(myName){
     lbl.textContent = myName;
     btn.classList.add('selected');
+    if(clr) clr.style.display = 'flex';
   } else {
     lbl.textContent = 'Знайди себе у списку';
     btn.classList.remove('selected');
+    if(clr) clr.style.display = 'none';
   }
+}
+
+function clearMe(){
+  myName = null;
+  localStorage.removeItem('attendance_myname');
+  updateFindMeBtn();
 }
 
 function openFindMe(){
@@ -1212,7 +1286,7 @@ openModal = function(name){
       if(old) old.remove();
       const badge = document.createElement('div');
       badge.id = 'my-rank-badge';
-      badge.style.cssText='display:inline-flex;align-items:center;gap:8px;background:var(--accent-dim);border:1px solid var(--accent);border-radius:100px;padding:6px 14px;font-size:13px;font-weight:600;color:var(--accent-2);margin-bottom:16px;font-family:"Geologica",sans-serif';
+      badge.style.cssText='display:inline-flex;align-items:center;gap:8px;background:var(--accent-dim);border:1px solid var(--accent);border-radius:100px;padding:6px 14px;font-size:13px;font-weight:600;color:var(--accent-2);margin-bottom:16px;font-family:"Onest",sans-serif';
       badge.innerHTML=`<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg> ${rank} місце з ${ranked.length} учасників`;
       const mb = document.querySelector('#modal-box .modal-body');
       if(mb) mb.insertBefore(badge, mb.firstChild);
@@ -1230,7 +1304,7 @@ setTimeout(updateFindMeBtn, 500);
   <div class="modal" id="find-modal-box" style="max-width:480px">
     <div class="modal-header">
       <div>
-        <div style="font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-2);margin-bottom:6px;font-family:'Geologica',sans-serif">Хто ти?</div>
+        <div style="font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-2);margin-bottom:6px;font-family:'Onest',sans-serif">Хто ти?</div>
         <div class="modal-name" style="font-size:22px">Знайди себе у списку</div>
       </div>
       <button class="modal-close" onclick="closeFindModal()">
@@ -1240,7 +1314,7 @@ setTimeout(updateFindMeBtn, 500);
     <div class="modal-body">
       <div style="position:relative;margin-bottom:16px">
         <input id="find-search" type="text" placeholder="Введи своє ім'я або вибери зі списку..."
-          style="width:100%;padding:12px 16px;background:var(--surface-2);border:1px solid var(--border-2);border-radius:var(--r-sm);color:var(--text);font-family:'Golos Text',sans-serif;font-size:15px;outline:none;transition:border-color var(--t)"
+          style="width:100%;padding:12px 16px;background:var(--surface-2);border:1px solid var(--border-2);border-radius:var(--r-sm);color:var(--text);font-family:'Manrope',sans-serif;font-size:15px;outline:none;transition:border-color var(--t)"
           oninput="filterNames(this.value)"
           onfocus="this.style.borderColor='var(--accent)'"
           onblur="this.style.borderColor='var(--border-2)'">
