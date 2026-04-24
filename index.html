@@ -6,44 +6,8 @@
 <title>Наші зустрічі</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js">
-// ── PARALLAX ──
-const heroParallax = document.getElementById('hero-parallax');
-let ticking = false;
-window.addEventListener('scroll', () => {
-  if(!ticking){
-    requestAnimationFrame(()=>{
-      const y = window.scrollY;
-      if(heroParallax && y < 600){
-        heroParallax.style.transform = `translateY(${y * 0.22}px)`;
-        heroParallax.style.opacity = Math.max(0, 1 - y / 500);
-      }
-      ticking = false;
-    });
-    ticking = true;
-  }
-}, {passive:true});
-
-// ── SMOOTH CARD STAGGER on scroll ──
-const cardObs = new IntersectionObserver((entries)=>{
-  entries.forEach((e,i)=>{
-    if(e.isIntersecting){
-      setTimeout(()=>e.target.classList.add('vis'), i * 40);
-      cardObs.unobserve(e.target);
-    }
-  });
-},{threshold:.05, rootMargin:'0px 0px -40px 0px'});
-
-function observeCards(){
-  document.querySelectorAll('.pcard:not(.vis),.kpi-card:not(.vis)').forEach(el=>cardObs.observe(el));
-}
-// re-run after render
-const origRenderAll = renderAll;
-window.renderAll = function(){origRenderAll(); setTimeout(observeCards, 100);}
-setTimeout(observeCards, 300);
-
-</script>
+<link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;700;800&family=Golos+Text:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
@@ -76,12 +40,12 @@ setTimeout(observeCards, 300);
 }
 
 [data-theme="light"]{
-  --bg:#f5f5f8;
-  --surface:#ffffff;
-  --surface-2:#f0f0f5;
-  --surface-3:#e8e8f0;
-  --border:#e0e0ea;
-  --border-2:#d0d0de;
+  --bg:#eeeefc;
+  --surface:#f8f8ff;
+  --surface-2:#e8e8f8;
+  --surface-3:#dcdcf4;
+  --border:#d0d0ec;
+  --border-2:#c0c0e0;
   --text:#111118;
   --text-2:#555568;
   --text-3:#888899;
@@ -98,8 +62,8 @@ setTimeout(observeCards, 300);
 }
 
 html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.65;min-height:100vh;transition:background var(--t),color var(--t);-webkit-font-smoothing:antialiased}
-h1,h2,h3,h4{font-family:'Syne',sans-serif;letter-spacing:-.025em;line-height:1.2}
+body{font-family:'Golos Text',sans-serif;background:var(--bg);color:var(--text);line-height:1.65;min-height:100vh;transition:background var(--t),color var(--t);-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:'Geologica',sans-serif;letter-spacing:-.025em;line-height:1.2}
 
 ::-webkit-scrollbar{width:5px;height:5px}
 ::-webkit-scrollbar-track{background:transparent}
@@ -123,13 +87,13 @@ h1,h2,h3,h4{font-family:'Syne',sans-serif;letter-spacing:-.025em;line-height:1.2
   box-shadow:0 0 12px var(--accent-glow);
 }
 .logo-mark svg{color:#fff}
-.logo-name{font-family:'Syne',sans-serif;font-weight:600;font-size:16px}
+.logo-name{font-family:'Geologica',sans-serif;font-weight:600;font-size:16px}
 .logo-name span{color:var(--text-2);font-weight:400}
 
 .header-right{display:flex;align-items:center;gap:8px}
 
 .year-toggle{display:flex;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--r-sm);padding:3px;gap:2px}
-.year-btn{font-family:'Syne',sans-serif;font-size:13px;font-weight:600;padding:5px 16px;border:none;border-radius:7px;cursor:pointer;background:transparent;color:var(--text-2);transition:all var(--t)}
+.year-btn{font-family:'Geologica',sans-serif;font-size:13px;font-weight:600;padding:5px 16px;border:none;border-radius:7px;cursor:pointer;background:transparent;color:var(--text-2);transition:all var(--t)}
 .year-btn:hover{color:var(--text)}
 .year-btn.active{background:var(--accent);color:#fff;box-shadow:0 2px 8px var(--accent-glow)}
 
@@ -149,7 +113,7 @@ h1,h2,h3,h4{font-family:'Syne',sans-serif;letter-spacing:-.025em;line-height:1.2
 .quote-ticker:hover{animation-play-state:paused}
 @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 .quote-item{display:inline-flex;align-items:center;gap:12px;padding:0 48px;color:var(--text-2);font-size:13px;font-style:italic}
-.quote-item strong{color:var(--accent-2);font-style:normal;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-family:'Syne',sans-serif}
+.quote-item strong{color:var(--accent-2);font-style:normal;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-family:'Geologica',sans-serif}
 .quote-sep{color:var(--border-2);font-size:20px;line-height:1}
 
 /* ── HERO ── */
@@ -166,8 +130,37 @@ h1,h2,h3,h4{font-family:'Syne',sans-serif;letter-spacing:-.025em;line-height:1.2
   padding:12px 0 12px 20px;
   font-style:italic;color:var(--text-2);
   font-size:15px;max-width:600px;line-height:1.7;
+  margin-bottom:0;
 }
 .hero-quote cite{display:block;margin-top:6px;font-style:normal;font-size:12px;font-weight:600;letter-spacing:.04em;color:var(--accent-2);text-transform:uppercase}
+
+/* ── FIND ME BUTTON ── */
+.find-me-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  margin-top:28px;
+  padding:13px 24px;
+  background:var(--accent-dim);
+  border:1px solid color-mix(in srgb,var(--accent) 40%,var(--border));
+  border-radius:100px;
+  color:var(--accent-2);
+  font-size:15px;font-weight:600;font-family:'Geologica',sans-serif;
+  cursor:pointer;
+  transition:all var(--t);
+}
+.find-me-btn:hover{
+  background:color-mix(in srgb,var(--accent) 20%,transparent);
+  border-color:var(--accent);
+  box-shadow:0 0 0 4px var(--accent-dim);
+  transform:translateY(-1px);
+}
+.find-me-btn.selected{
+  background:var(--accent);
+  border-color:var(--accent);
+  color:#fff;
+}
+.find-me-btn.selected:hover{
+  box-shadow:0 4px 16px var(--accent-glow);
+}
 
 /* ── KPI ── */
 .kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin-bottom:56px}
@@ -183,7 +176,7 @@ h1,h2,h3,h4{font-family:'Syne',sans-serif;letter-spacing:-.025em;line-height:1.2
 .kpi-icon.c-green{background:var(--green-dim);color:var(--green)}
 .kpi-icon.c-amber{background:var(--amber-dim);color:var(--amber)}
 .kpi-label{font-size:12px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--text-2);margin-bottom:8px}
-.kpi-val{font-family:'Syne',sans-serif;font-size:42px;font-weight:700;line-height:1;color:var(--text);margin-bottom:4px}
+.kpi-val{font-family:'Geologica',sans-serif;font-size:42px;font-weight:700;line-height:1;color:var(--text);margin-bottom:4px}
 .kpi-sub{font-size:13px;color:var(--text-2)}
 
 /* ── SECTIONS ── */
@@ -269,6 +262,15 @@ h1,h2,h3,h4{font-family:'Syne',sans-serif;letter-spacing:-.025em;line-height:1.2
 .hm-name-td:hover{color:var(--accent-2)}
 .hm-name-td .name-link{text-decoration:none;color:inherit;transition:color var(--t)}
 .hm-name-td .name-link:hover{color:var(--accent-2)}
+/* Row highlight: entire row lights up on hover */
+.hm-table tbody tr{transition:background var(--t)}
+.hm-table tbody tr:hover{background:color-mix(in srgb,var(--accent) 6%,transparent)}
+.hm-table tbody tr:hover .hm-name-td{
+  background:color-mix(in srgb,var(--accent) 10%,var(--surface));
+  color:var(--accent-2);
+}
+.hm-table tbody tr:hover .hm-dot-cell.c-present{opacity:1;transform:scale(1.1)}
+.hm-table tbody tr:hover .hm-dot-cell.c-absent{opacity:.9}
 
 /* Data cells */
 .hm-cell-td{padding:2px;text-align:center;vertical-align:middle}
@@ -305,8 +307,8 @@ h1,h2,h3,h4{font-family:'Syne',sans-serif;letter-spacing:-.025em;line-height:1.2
 .pcard:hover{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-dim);transform:translateY(-2px)}
 
 .pcard-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px}
-.pcard-name{font-family:'Syne',sans-serif;font-size:15px;font-weight:600;color:var(--text)}
-.pcard-rate{font-family:'Syne',sans-serif;font-size:36px;font-weight:700;line-height:1;margin-bottom:4px}
+.pcard-name{font-family:'Geologica',sans-serif;font-size:15px;font-weight:600;color:var(--text)}
+.pcard-rate{font-family:'Geologica',sans-serif;font-size:36px;font-weight:700;line-height:1;margin-bottom:4px}
 .pcard-rate.g-high{color:var(--green)}
 .pcard-rate.g-mid{color:var(--amber)}
 .pcard-rate.g-low{color:var(--text-2)}
@@ -350,7 +352,7 @@ h1,h2,h3,h4{font-family:'Syne',sans-serif;letter-spacing:-.025em;line-height:1.2
   color:var(--text-2);transition:all var(--t);flex-shrink:0;
 }
 .modal-close:hover{color:var(--text);border-color:var(--border-2)}
-.modal-name{font-family:'Syne',sans-serif;font-size:26px;font-weight:700}
+.modal-name{font-family:'Geologica',sans-serif;font-size:26px;font-weight:700}
 .modal-body{padding:0 28px 28px}
 
 .modal-stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px}
@@ -358,7 +360,7 @@ h1,h2,h3,h4{font-family:'Syne',sans-serif;letter-spacing:-.025em;line-height:1.2
   background:var(--surface-2);border:1px solid var(--border);border-radius:var(--r-sm);
   padding:16px;text-align:center;
 }
-.modal-stat-val{font-family:'Syne',sans-serif;font-size:28px;font-weight:700;line-height:1;margin-bottom:4px}
+.modal-stat-val{font-family:'Geologica',sans-serif;font-size:28px;font-weight:700;line-height:1;margin-bottom:4px}
 .modal-stat-val.c-green{color:var(--green)}
 .modal-stat-val.c-amber{color:var(--amber)}
 .modal-stat-lbl{font-size:11px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--text-3)}
@@ -389,247 +391,123 @@ h1,h2,h3,h4{font-family:'Syne',sans-serif;letter-spacing:-.025em;line-height:1.2
 
 /* ── RESPONSIVE ── */
 
-/* Tablet (768px) */
-@media(max-width:900px){
-  .people-grid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+/* Large tablet */
+@media(max-width:1024px){
+  .people-grid{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
 }
 
+/* Tablet */
 @media(max-width:768px){
   .container{padding:0 16px}
   .hero{padding:48px 0 36px}
-  .hero-title{font-size:clamp(28px,7vw,48px)}
-  .hero-sub{font-size:15px}
-  .hero-quote{font-size:14px}
-  
+  .hero-title{font-size:clamp(30px,7vw,52px)}
+  .hero-sub{font-size:15px;margin-bottom:20px}
+  .hero-quote{font-size:14px;padding:10px 0 10px 16px;max-width:100%}
+  .find-me-btn{font-size:14px;padding:12px 20px;margin-top:20px}
+
   .kpi-grid{grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:40px}
   .kpi-val{font-size:34px}
-  .kpi-card{padding:18px 18px 16px}
-  
+  .kpi-card{padding:18px}
+  .kpi-icon{width:30px;height:30px;margin-bottom:12px}
+
   .section{margin-bottom:48px}
   .section-title{font-size:18px}
-  .section-head{margin-bottom:16px}
-  
+  .section-head{margin-bottom:16px;gap:8px}
+
   .chart-card{padding:16px}
   .chart-wrap{height:200px}
-  
+
   .quote-divider{padding:18px 20px;font-size:14px;margin-bottom:40px}
-  
-  /* Heatmap: smaller dots on tablet */
+  .quote-divider::before{font-size:80px;right:12px}
+
   .hm-dot-cell{width:16px;height:16px}
   .hm-date-inner,.hm-date-inner-bot{height:56px;font-size:9px}
-  .hm-name-td{font-size:12px;padding-right:10px;min-width:90px}
-  .hm-name-th{min-width:90px}
+  .hm-name-td{font-size:12px;padding-right:10px;min-width:88px}
+  .hm-name-th{min-width:88px}
   .heatmap-card{padding:16px}
-  
+
   .people-grid{grid-template-columns:repeat(2,1fr);gap:8px}
   .pcard{padding:16px}
-  .pcard-rate{font-size:30px}
-  
-  .modal-stat-row{grid-template-columns:repeat(3,1fr);gap:8px}
-  .modal-name{font-size:22px}
+  .pcard-rate{font-size:28px}
+  .pcard-name{font-size:14px}
+
+  .sort-row{gap:6px}
+
+  .modal{max-height:90vh}
   .modal-header{padding:20px 20px 0}
   .modal-body{padding:0 20px 20px}
+  .modal-name{font-size:20px}
+  .modal-stat-row{gap:8px}
   .modal-stat-val{font-size:22px}
-  
+  .modal-chart-wrap{height:130px}
+
   .logo-name span{display:none}
   .header-inner{height:54px}
   .year-btn{padding:4px 12px;font-size:12px}
+  .quote-banner{padding:10px 0}
+  .quote-item{font-size:12px;padding:0 28px}
 }
 
-/* Phone (480px) */
+/* Phone */
 @media(max-width:480px){
   .container{padding:0 12px}
   .hero{padding:36px 0 28px}
-  .hero-title{font-size:clamp(24px,8vw,36px)}
-  .hero-sub{font-size:14px;margin-bottom:20px}
-  .hero-quote{font-size:13px;padding:10px 0 10px 14px}
-  
+  .hero-title{font-size:clamp(26px,8vw,38px)}
+  .hero-sub{font-size:14px}
+  .hero-quote{font-size:13px;padding:8px 0 8px 14px}
+  .find-me-btn{width:100%;justify-content:center;font-size:14px;padding:13px 20px}
+
   .kpi-grid{grid-template-columns:1fr 1fr;gap:8px;margin-bottom:32px}
   .kpi-card{padding:14px}
   .kpi-val{font-size:28px}
   .kpi-label{font-size:10px}
   .kpi-sub{font-size:11px}
-  .kpi-icon{width:28px;height:28px;margin-bottom:10px}
-  
+  .kpi-icon{width:26px;height:26px;margin-bottom:10px}
+
+  .section{margin-bottom:36px}
+  .section-title{font-size:17px}
+
   .people-grid{grid-template-columns:1fr 1fr;gap:8px}
   .pcard{padding:14px}
   .pcard-name{font-size:13px}
-  .pcard-rate{font-size:26px}
+  .pcard-rate{font-size:24px}
+  .pcard-sub{font-size:11px}
   .mini-dots{gap:2px}
   .md{width:6px;height:6px}
-  
-  /* Heatmap tiny dots on phone */
+
   .hm-dot-cell{width:13px;height:13px}
-  .hm-date-inner,.hm-date-inner-bot{height:48px;font-size:8px}
+  .hm-date-inner,.hm-date-inner-bot{height:46px;font-size:8px}
   .hm-cell-td{padding:1px}
-  .hm-name-td{font-size:11px;min-width:72px;padding-right:6px}
-  .hm-name-th{min-width:72px}
-  
-  .modal{max-height:92vh}
-  .modal-stat-row{gap:6px}
-  .modal-stat{padding:10px}
+  .hm-name-td{font-size:11px;min-width:70px;padding-right:6px}
+  .hm-name-th{min-width:70px}
+
+  .quote-divider{padding:14px 16px;font-size:13px;margin-bottom:32px}
+  .quote-divider::before{display:none}
+
+  .modal-stat-row{grid-template-columns:repeat(3,1fr);gap:6px}
+  .modal-stat{padding:10px 8px}
   .modal-stat-val{font-size:18px}
-  .modal-chart-wrap{height:120px}
-  
-  .quote-banner{display:none} /* hide ticker on small screens, too dense */
-  .quote-divider{padding:14px 16px;font-size:13px}
-  
-  .sort-row{gap:6px}
-  .sort-chip{font-size:11px;padding:4px 10px}
-  
+  .modal-stat-lbl{font-size:9px}
+  .modal-chart-wrap{height:110px}
+  .modal-name{font-size:18px}
+
+  .find-name-item{padding:10px 12px;font-size:13px}
+  #find-modal-box{margin:0;border-radius:var(--r) var(--r) 0 0;max-height:85vh}
+  #find-modal{align-items:flex-end;padding:0}
+
+  .quote-banner{display:none}
   .logo-name{display:none}
   .year-btn{padding:4px 10px;font-size:11px}
+  .theme-btn{width:32px;height:32px}
 }
 
-/* Very small (360px) */
+/* Very small */
 @media(max-width:360px){
   .people-grid{grid-template-columns:1fr}
   .kpi-grid{grid-template-columns:1fr 1fr}
-  .hero-title{font-size:26px}
+  .hero-title{font-size:24px}
+  .find-me-btn{font-size:13px}
 }
-
-/* ── DESIGN UPGRADES ── */
-
-/* Gradient mesh on body */
-body::before{
-  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
-  background:radial-gradient(ellipse 80% 50% at 50% -10%,rgba(124,106,247,.18) 0%,transparent 60%),
-             radial-gradient(ellipse 60% 40% at 90% 80%,rgba(52,211,153,.08) 0%,transparent 50%);
-}
-[data-theme="light"] body::before{
-  background:radial-gradient(ellipse 80% 50% at 50% -10%,rgba(91,79,232,.06) 0%,transparent 60%);
-}
-.container{position:relative;z-index:1}
-
-/* Glass KPI cards */
-.kpi-card{
-  background:linear-gradient(135deg,color-mix(in srgb,var(--surface) 95%,var(--accent)) 0%,var(--surface) 100%);
-  backdrop-filter:blur(8px);
-  position:relative;overflow:hidden;
-}
-.kpi-card::before{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(135deg,rgba(255,255,255,.04) 0%,transparent 60%);
-  pointer-events:none;border-radius:inherit;
-}
-.kpi-card:hover{
-  border-color:color-mix(in srgb,var(--accent) 50%,var(--border));
-  box-shadow:0 0 0 1px color-mix(in srgb,var(--accent) 20%,transparent),var(--shadow-lg);
-  transform:translateY(-3px);
-}
-.kpi-val{
-  background:linear-gradient(135deg,var(--text) 40%,var(--text-2));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-}
-
-/* Chart card glow */
-.chart-card{
-  position:relative;overflow:hidden;
-  background:linear-gradient(160deg,color-mix(in srgb,var(--surface) 97%,var(--accent)) 0%,var(--surface) 100%);
-}
-.chart-card::before{
-  content:'';position:absolute;top:-1px;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,transparent,var(--accent),transparent);
-  opacity:.5;
-}
-
-/* Gradient border cards (glass effect) */
-.pcard{
-  background:linear-gradient(145deg,color-mix(in srgb,var(--surface) 96%,var(--accent)) 0%,var(--surface) 100%);
-  position:relative;overflow:hidden;
-}
-.pcard::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(135deg,rgba(255,255,255,.03) 0%,transparent 50%);
-  pointer-events:none;border-radius:inherit;
-}
-.pcard:hover{
-  border-color:var(--accent);
-  box-shadow:0 0 0 1px var(--accent-dim),0 8px 32px rgba(0,0,0,.4);
-}
-
-/* Big rate text gradient */
-.pcard-rate.g-high{
-  background:linear-gradient(135deg,var(--green),color-mix(in srgb,var(--green) 60%,var(--accent)));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-}
-.pcard-rate.g-mid{
-  background:linear-gradient(135deg,var(--amber),color-mix(in srgb,var(--amber) 60%,var(--red)));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-}
-
-/* Section title with accent underline */
-.section-title{position:relative;display:inline-block}
-.section-title::after{
-  content:'';position:absolute;bottom:-4px;left:0;
-  width:32px;height:2px;
-  background:linear-gradient(90deg,var(--accent),transparent);
-  border-radius:2px;
-}
-
-/* Hero gradient title */
-.hero-title{
-  background:linear-gradient(135deg,var(--text) 40%,color-mix(in srgb,var(--text) 60%,var(--accent-2)));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-}
-.hero-title em{
-  background:linear-gradient(135deg,var(--accent-2),color-mix(in srgb,var(--accent-2) 60%,var(--green)));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-}
-
-/* Quote divider upgrade */
-.quote-divider{
-  position:relative;overflow:hidden;
-  background:linear-gradient(135deg,color-mix(in srgb,var(--surface) 80%,var(--accent)) 0%,var(--surface) 100%);
-}
-.quote-divider::before{
-  content:'"';position:absolute;right:20px;top:-10px;
-  font-family:'Syne',sans-serif;font-size:120px;font-weight:800;line-height:1;
-  color:var(--accent);opacity:.06;pointer-events:none;
-}
-
-/* Modal header gradient */
-.modal{
-  background:linear-gradient(160deg,color-mix(in srgb,var(--surface) 94%,var(--accent)) 0%,var(--surface) 60%);
-}
-
-/* Heatmap name hover */
-.hm-name-td:hover .name-link{
-  background:linear-gradient(90deg,var(--accent-2),var(--green));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-}
-
-/* Smooth all transitions */
-*{-webkit-tap-highlight-color:transparent}
-html{scroll-behavior:smooth}
-
-/* Parallax hero wrapper */
-.hero-parallax{will-change:transform;transition:transform .05s linear}
-
-/* Glow on accent elements */
-.logo-mark{
-  box-shadow:0 0 20px var(--accent-glow),0 0 40px rgba(124,106,247,.1);
-}
-.hero-eyebrow-dot{
-  box-shadow:0 0 12px var(--accent),0 0 24px rgba(124,106,247,.4);
-  animation:pulse-dot 2.5s ease-in-out infinite;
-}
-@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.7;transform:scale(.85)}}
-
-/* DM Mono for numbers */
-.kpi-val,.pcard-rate,.modal-stat-val{font-family:'DM Mono','Syne',monospace;letter-spacing:-.02em}
-
-/* Quote item text brighter */
-.quote-item{color:var(--text-2) !important}
-.quote-divider{color:var(--text)}
-
-/* Scroll fade-in with translateY larger offset */
-.section{transform:translateY(24px)}
-.section.vis{transform:translateY(0)}
-
-/* Better scrollbar */
-::-webkit-scrollbar{width:4px;height:4px}
-::-webkit-scrollbar-thumb{background:linear-gradient(var(--accent),var(--accent-2));border-radius:2px;opacity:.5}
 </style>
 </head>
 <body>
@@ -692,6 +570,10 @@ html{scroll-behavior:smooth}
       «Не дамо припинитися нашим зустрічам, як то дехто намагається. Навпаки, підтримуймо одне одного дедалі дужче. Адже ми бачимо, як наближається День.»
       <cite>До Євреїв 10:25</cite>
     </blockquote>
+    <button class="find-me-btn" onclick="openFindMe()" id="find-me-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <span id="find-me-label">Знайди себе у списку</span>
+    </button>
   </div></section>
 
   <!-- KPI -->
@@ -752,6 +634,15 @@ html{scroll-behavior:smooth}
 <footer class="footer">
   <div class="container">
     <p>Молодь церкви Світло Євангелії · Оновлено <span id="footer-date"></span></p>
+    <p style="margin-top:10px">
+      <a href="https://docs.google.com/spreadsheets/d/1lCetN_Jy2eOkXbccyPW6TfTGtmdbD2ac1ekHo9KfPGQ/edit" 
+         target="_blank" rel="noopener"
+         style="color:var(--accent-2);text-decoration:none;font-size:12px;display:inline-flex;align-items:center;gap:6px;opacity:.8;transition:opacity .2s"
+         onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.8">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Відкрити таблицю Google Sheets
+      </a>
+    </p>
   </div>
 </footer>
 
@@ -779,7 +670,104 @@ html{scroll-behavior:smooth}
 </div>
 
 <script>
-const DATA = {"2025": {"dates": ["2025-01-04", "2025-01-18", "2025-02-08", "2025-02-15", "2025-02-22", "2025-03-01", "2025-03-22", "2025-03-29", "2025-04-12", "2025-05-03", "2025-05-24", "2025-06-07", "2025-06-14", "2025-06-21", "2025-07-05", "2025-08-16", "2025-08-23", "2025-08-30", "2025-08-30__dup1", "2025-09-06", "2025-09-20", "2025-09-27", "2025-10-11", "2025-10-18", "2025-11-01", "2025-11-15", "2025-11-29", "2025-12-27"], "people": [{"name": "Алла", "attendance": {"2025-01-04": 1, "2025-01-18": 1, "2025-02-08": 1, "2025-02-15": 1, "2025-02-22": 1, "2025-03-01": 1, "2025-03-22": 0, "2025-03-29": 1, "2025-04-12": 0, "2025-05-03": 1, "2025-05-24": 1, "2025-06-07": 1, "2025-06-14": 0, "2025-06-21": 0, "2025-07-05": 1, "2025-08-16": 0, "2025-08-23": 1, "2025-08-30": 0, "2025-08-30__dup1": 0, "2025-09-06": 0, "2025-09-20": 0, "2025-09-27": 0, "2025-10-11": 1, "2025-10-18": 0, "2025-11-01": 0, "2025-11-15": 0, "2025-11-29": 1, "2025-12-27": 0}}, {"name": "Альберт", "attendance": {"2025-01-04": 0, "2025-01-18": 1, "2025-02-08": 1, "2025-02-15": 1, "2025-02-22": 1, "2025-03-01": 1, "2025-03-22": 0, "2025-03-29": 1, "2025-04-12": 1, "2025-05-03": 1, "2025-05-24": 1, "2025-06-07": 1, "2025-06-14": 1, "2025-06-21": 1, "2025-07-05": 0, "2025-08-16": 1, "2025-08-23": 1, "2025-08-30": 0, "2025-08-30__dup1": 0, "2025-09-06": 1, "2025-09-20": 0, "2025-09-27": 1, "2025-10-11": 0, "2025-10-18": 1, "2025-11-01": 1, "2025-11-15": 1, "2025-11-29": 1, "2025-12-27": 0}}, {"name": "Ангеліна", "attendance": {"2025-01-04": 0, "2025-01-18": 1, "2025-02-08": 1, "2025-02-15": 1, "2025-02-22": 1, "2025-03-01": 1, "2025-03-22": 0, "2025-03-29": 1, "2025-04-12": 1, "2025-05-03": 1, "2025-05-24": 1, "2025-06-07": 1, "2025-06-14": 1, "2025-06-21": 1, "2025-07-05": 0, "2025-08-16": 1, "2025-08-23": 0, "2025-08-30": 0, "2025-08-30__dup1": 0, "2025-09-06": 0, "2025-09-20": 0, "2025-09-27": 0, "2025-10-11": 0, "2025-10-18": 0, "2025-11-01": 0, "2025-11-15": 0, "2025-11-29": 0, "2025-12-27": 0}}, {"name": "Артем", "attendance": {"2025-01-04": 1, "2025-01-18": 0, "2025-02-08": 1, "2025-02-15": 1, "2025-02-22": 1, "2025-03-01": 1, "2025-03-22": 1, "2025-03-29": 1, "2025-04-12": 1, "2025-05-03": 1, "2025-05-24": 1, "2025-06-07": 1, "2025-06-14": 1, "2025-06-21": 1, "2025-07-05": 1, "2025-08-16": 1, "2025-08-23": 1, "2025-08-30": 1, "2025-08-30__dup1": 1, "2025-09-06": 1, "2025-09-20": 1, "2025-09-27": 1, "2025-10-11": 1, "2025-10-18": 1, "2025-11-01": 1, "2025-11-15": 1, "2025-11-29": 1, "2025-12-27": 1}}, {"name": "Арсен", "attendance": {"2025-01-04": null, "2025-01-18": null, "2025-02-08": null, "2025-02-15": null, "2025-02-22": null, "2025-03-01": null, "2025-03-22": null, "2025-03-29": null, "2025-04-12": null, "2025-05-03": null, "2025-05-24": null, "2025-06-07": null, "2025-06-14": null, "2025-06-21": null, "2025-07-05": null, "2025-08-16": null, "2025-08-23": 1, "2025-08-30": 1, "2025-08-30__dup1": 1, "2025-09-06": 1, "2025-09-20": 0, "2025-09-27": 0, "2025-10-11": 0, "2025-10-18": 0, "2025-11-01": 0, "2025-11-15": 0, "2025-11-29": 0, "2025-12-27": 1}}, {"name": "Богдан", "attendance": {"2025-01-04": 1, "2025-01-18": 1, "2025-02-08": 1, "2025-02-15": 1, "2025-02-22": 1, "2025-03-01": 1, "2025-03-22": 1, "2025-03-29": 1, "2025-04-12": 1, "2025-05-03": 1, "2025-05-24": 1, "2025-06-07": 1, "2025-06-14": 1, "2025-06-21": 1, "2025-07-05": 1, "2025-08-16": 1, "2025-08-23": 1, "2025-08-30": 0, "2025-08-30__dup1": 0, "2025-09-06": 1, "2025-09-20": 1, "2025-09-27": 1, "2025-10-11": 1, "2025-10-18": 1, "2025-11-01": 0, "2025-11-15": 0, "2025-11-29": 1, "2025-12-27": 1}}, {"name": "Віка Ільюк", "attendance": {"2025-01-04": 0, "2025-01-18": 1, "2025-02-08": 0, "2025-02-15": 1, "2025-02-22": 1, "2025-03-01": 1, "2025-03-22": 0, "2025-03-29": 1, "2025-04-12": 0, "2025-05-03": 0, "2025-05-24": 1, "2025-06-07": 1, "2025-06-14": 1, "2025-06-21": 1, "2025-07-05": 1, "2025-08-16": 1, "2025-08-23": 0, "2025-08-30": 0, "2025-08-30__dup1": 0, "2025-09-06": 1, "2025-09-20": 1, "2025-09-27": 1, "2025-10-11": 1, "2025-10-18": 1, "2025-11-01": 1, "2025-11-15": 1, "2025-11-29": 1, "2025-12-27": 1}}, {"name": "Віка О", "attendance": {"2025-01-04": 0, "2025-01-18": 0, "2025-02-08": 0, "2025-02-15": 0, "2025-02-22": 0, "2025-03-01": 0, "2025-03-22": 0, "2025-03-29": 0, "2025-04-12": 0, "2025-05-03": 0, "2025-05-24": 0, "2025-06-07": 0, "2025-06-14": 0, "2025-06-21": 0, "2025-07-05": 0, "2025-08-16": 0, "2025-08-23": 0, "2025-08-30": 0, "2025-08-30__dup1": 0, "2025-09-06": 0, "2025-09-20": 0, "2025-09-27": 0, "2025-10-11": 0, "2025-10-18": 0, "2025-11-01": 0, "2025-11-15": 0, "2025-11-29": 0, "2025-12-27": 0}}, {"name": "Віка Сінькова", "attendance": {"2025-01-04": 1, "2025-01-18": 1, "2025-02-08": 1, "2025-02-15": 1, "2025-02-22": 1, "2025-03-01": 0, "2025-03-22": 1, "2025-03-29": 1, "2025-04-12": 1, "2025-05-03": 1, "2025-05-24": 1, "2025-06-07": 1, "2025-06-14": 1, "2025-06-21": 1, "2025-07-05": 1, "2025-08-16": 1, "2025-08-23": 1, "2025-08-30": 1, "2025-08-30__dup1": 1, "2025-09-06": 1, "2025-09-20": 1, "2025-09-27": 1, "2025-10-11": 1, "2025-10-18": 1, "2025-11-01": 1, "2025-11-15": 1, "2025-11-29": 1, "2025-12-27": 1}}, {"name": "Віллі", "attendance": {"2025-01-04": 1, "2025-01-18": 1, "2025-02-08": 1, "2025-02-15": 0, "2025-02-22": 1, "2025-03-01": 1, "2025-03-22": 0, "2025-03-29": 0, "2025-04-12": 0, "2025-05-03": 1, "2025-05-24": 1, "2025-06-07": 1, "2025-06-14": 0, "2025-06-21": 0, "2025-07-05": 0, "2025-08-16": 0, "2025-08-23": 1, "2025-08-30": 1, "2025-08-30__dup1": 1, "2025-09-06": 0, "2025-09-20": 0, "2025-09-27": 0, "2025-10-11": 1, "2025-10-18": 0, "2025-11-01": 0, "2025-11-15": 0, "2025-11-29": 0, "2025-12-27": 0}}, {"name": "Віталік", "attendance": {"2025-01-04": null, "2025-01-18": null, "2025-02-08": 1, "2025-02-15": 1, "2025-02-22": 1, "2025-03-01": 1, "2025-03-22": 1, "2025-03-29": 1, "2025-04-12": 1, "2025-05-03": 1, "2025-05-24": 1, "2025-06-07": 1, "2025-06-14": 1, "2025-06-21": 1, "2025-07-05": 1, "2025-08-16": 1, "2025-08-23": 1, "2025-08-30": 0, "2025-08-30__dup1": 0, "2025-09-06": 1, "2025-09-20": 1, "2025-09-27": 1, "2025-10-11": 1, "2025-10-18": 1, "2025-11-01": 0, "2025-11-15": 1, "2025-11-29": 1, "2025-12-27": 1}}, {"name": "Вова", "attendance": {"2025-01-04": 1, "2025-01-18": 1, "2025-02-08": 1, "2025-02-15": 1, "2025-02-22": 1, "2025-03-01": 1, "2025-03-22": 1, "2025-03-29": 0, "2025-04-12": 1, "2025-05-03": 1, "2025-05-24": 1, "2025-06-07": 1, "2025-06-14": 1, "2025-06-21": 1, "2025-07-05": 0, "2025-08-16": 0, "2025-08-23": 1, "2025-08-30": 0, "2025-08-30__dup1": 0, "2025-09-06": 0, "2025-09-20": 1, "2025-09-27": 1, "2025-10-11": 1, "2025-10-18": 1, "2025-11-01": 0, "2025-11-15": 1, "2025-11-29": 1, "2025-12-27": 1}}, {"name": "Діана", "attendance": {"2025-01-04": 1, "2025-01-18": 1, "2025-02-08": 1, "2025-02-15": 1, "2025-02-22": 1, "2025-03-01": 1, "2025-03-22": 1, "2025-03-29": 1, "2025-04-12": 0, "2025-05-03": 0, "2025-05-24": 1, "2025-06-07": 1, "2025-06-14": 1, "2025-06-21": 1, "2025-07-05": 0, "2025-08-16": 1, "2025-08-23": 0, "2025-08-30": 1, "2025-08-30__dup1": 1, "2025-09-06": 0, "2025-09-20": 1, "2025-09-27": 1, "2025-10-11": 0, "2025-10-18": 1, "2025-11-01": 1, "2025-11-15": 1, "2025-11-29": 0, "2025-12-27": 1}}, {"name": "Еріка", "attendance": {"2025-01-04": 1, "2025-01-18": 1, "2025-02-08": 1, "2025-02-15": 1, "2025-02-22": 1, "2025-03-01": 0, "2025-03-22": 0, "2025-03-29": 1, "2025-04-12": 1, "2025-05-03": 1, "2025-05-24": 1, "2025-06-07": 1, "2025-06-14": 0, "2025-06-21": 0, "2025-07-05": 0, "2025-08-16": 0, "2025-08-23": 1, "2025-08-30": 1, "2025-08-30__dup1": 1, "2025-09-06": 0, "2025-09-20": 1, "2025-09-27": 0, "2025-10-11": 1, "2025-10-18": 0, "2025-11-01": 1, "2025-11-15": 0, "2025-11-29": 0, "2025-12-27": 1}}, {"name": "Єва", "attendance": {"2025-01-04": 0, "2025-01-18": 1, "2025-02-08": 0, "2025-02-15": 0, "2025-02-22": 0, "2025-03-01": 0, "2025-03-22": 1, "2025-03-29": 0, "2025-04-12": 0, "2025-05-03": 0, "2025-05-24": 0, "2025-06-07": 0, "2025-06-14": 0, "2025-06-21": 0, "2025-07-05": 0, "2025-08-16": 0, "2025-08-23": 0, "2025-08-30": 0, "2025-08-30__dup1": 0, "2025-09-06": 0, "2025-09-20": 0, "2025-09-27": 0, "2025-10-11": 0, "2025-10-18": 0, "2025-11-01": 0, "2025-11-15": 0, "2025-11-29": 0, "2025-12-27": 0}}, {"name": "Єлисей", "attendance": {"2025-01-04": 1, "2025-01-18": 1, "2025-02-08": 1, "2025-02-15": 1, "2025-02-22": 1, "2025-03-01": 1, "2025-03-22": 1, "2025-03-29": 1, "2025-04-12": 1, "2025-05-03": 1, "2025-05-24": 1, "2025-06-07": 1, "2025-06-14": 1, "2025-06-21": 1, "2025-07-05": 0, "2025-08-16": 1, "2025-08-23": 1, "2025-08-30": 0, "2025-08-30__dup1": 0, "2025-09-06": 1, "2025-09-20": 1, "2025-09-27": 1, "2025-10-11": 1, "2025-10-18": 1, "2025-11-01": 1, "2025-11-15": 1, "2025-11-29": 1, "2025-12-27": 1}}, {"name": "Ілля", "attendance": {"2025-01-04": 0, "2025-01-18": 1, "2025-02-08": 0, "2025-02-15": 0, "2025-02-22": 0, "2025-03-01": 0, "2025-03-22": 1, "2025-03-29": 0, "2025-04-12": 0, "2025-05-03": 0, "2025-05-24": 0, "2025-06-07": 0, "2025-06-14": 0, "2025-06-21": 0, "2025-07-05": 0, "2025-08-16": 0, "2025-08-23": 0, "2025-08-30": 0, "2025-08-30__dup1": 0, "2025-09-06": 0, "2025-09-20": 0, "2025-09-27": 0, "2025-10-11": 0, "2025-10-18": 0, "2025-11-01": 0, "2025-11-15": 0, "2025-11-29": 0, "2025-12-27": 0}}, {"name": "Катя", "attendance": {"2025-01-04": null, "2025-01-18": null, "2025-02-08": 1, "2025-02-15": 1, "2025-02-22": 1, "2025-03-01": 1, "2025-03-22": 1, "2025-03-29": 1, "2025-04-12": 1, "2025-05-03": 1, "2025-05-24": 1, "2025-06-07": 1, "2025-06-14": 1, "2025-06-21": 1, "2025-07-05": 1, "2025-08-16": 1, "2025-08-23": 1, "2025-08-30": 1, "2025-08-30__dup1": 1, "2025-09-06": 1, "2025-09-20": 1, "2025-09-27": 1, "2025-10-11": 1, "2025-10-18": 1, "2025-11-01": 1, "2025-11-15": 1, "2025-11-29": 1, "2025-12-27": 1}}, {"name": "Марія", "attendance": {"2025-01-04": 1, "2025-01-18": 1, "2025-02-08": 1, "2025-02-15": 1, "2025-02-22": 1, "2025-03-01": 1, "2025-03-22": 1, "2025-03-29": 1, "2025-04-12": 0, "2025-05-03": 0, "2025-05-24": 1, "2025-06-07": 1, "2025-06-14": 1, "2025-06-21": 1, "2025-07-05": 0, "2025-08-16": 1, "2025-08-23": 1, "2025-08-30": 1, "2025-08-30__dup1": 1, "2025-09-06": 0, "2025-09-20": 1, "2025-09-27": 1, "2025-10-11": 0, "2025-10-18": 1, "2025-11-01": 1, "2025-11-15": 1, "2025-11-29": 0, "2025-12-27": 1}}, {"name": "Марта", "attendance": {"2025-01-04": null, "2025-01-18": null, "2025-02-08": null, "2025-02-15": null, "2025-02-22": null, "2025-03-01": null, "2025-03-22": null, "2025-03-29": null, "2025-04-12": null, "2025-05-03": null, "2025-05-24": null, "2025-06-07": null, "2025-06-14": null, "2025-06-21": null, "2025-07-05": null, "2025-08-16": null, "2025-08-23": null, "2025-08-30": null, "2025-08-30__dup1": null, "2025-09-06": null, "2025-09-20": 1, "2025-09-27": 1, "2025-10-11": 0, "2025-10-18": 0, "2025-11-01": 0, "2025-11-15": 0, "2025-11-29": 0, "2025-12-27": 1}}, {"name": "Міша Марчук", "attendance": {"2025-01-04": 1, "2025-01-18": 0, "2025-02-08": 1, "2025-02-15": 1, "2025-02-22": 1, "2025-03-01": 0, "2025-03-22": 0, "2025-03-29": 1, "2025-04-12": 0, "2025-05-03": 0, "2025-05-24": 1, "2025-06-07": 1, "2025-06-14": 0, "2025-06-21": 0, "2025-07-05": 1, "2025-08-16": 1, "2025-08-23": 1, "2025-08-30": 1, "2025-08-30__dup1": 1, "2025-09-06": 0, "2025-09-20": 0, "2025-09-27": 1, "2025-10-11": 1, "2025-10-18": 1, "2025-11-01": 0, "2025-11-15": 0, "2025-11-29": 1, "2025-12-27": 1}}, {"name": "Міша Москвич", "attendance": {"2025-01-04": 1, "2025-01-18": 1, "2025-02-08": 0, "2025-02-15": 0, "2025-02-22": 1, "2025-03-01": 0, "2025-03-22": 0, "2025-03-29": 0, "2025-04-12": 0, "2025-05-03": 1, "2025-05-24": 0, "2025-06-07": 0, "2025-06-14": 0, "2025-06-21": 0, "2025-07-05": 0, "2025-08-16": 1, "2025-08-23": 1, "2025-08-30": 0, "2025-08-30__dup1": 0, "2025-09-06": 1, "2025-09-20": 1, "2025-09-27": 1, "2025-10-11": 1, "2025-10-18": 0, "2025-11-01": 0, "2025-11-15": 0, "2025-11-29": 1, "2025-12-27": 1}}, {"name": "Міша Назарук", "attendance": {"2025-01-04": 1, "2025-01-18": 0, "2025-02-08": 1, "2025-02-15": 1, "2025-02-22": 1, "2025-03-01": 1, "2025-03-22": 0, "2025-03-29": 1, "2025-04-12": 1, "2025-05-03": 1, "2025-05-24": 1, "2025-06-07": 1, "2025-06-14": 0, "2025-06-21": 0, "2025-07-05": 0, "2025-08-16": 0, "2025-08-23": 1, "2025-08-30": 1, "2025-08-30__dup1": 1, "2025-09-06": 0, "2025-09-20": 0, "2025-09-27": 0, "2025-10-11": 1, "2025-10-18": 0, "2025-11-01": 1, "2025-11-15": 0, "2025-11-29": 0, "2025-12-27": 1}}, {"name": "Назар", "attendance": {"2025-01-04": 1, "2025-01-18": 1, "2025-02-08": 1, "2025-02-15": 1, "2025-02-22": 0, "2025-03-01": 1, "2025-03-22": 0, "2025-03-29": 1, "2025-04-12": 0, "2025-05-03": 0, "2025-05-24": 1, "2025-06-07": 1, "2025-06-14": 1, "2025-06-21": 1, "2025-07-05": 0, "2025-08-16": 1, "2025-08-23": 1, "2025-08-30": 1, "2025-08-30__dup1": 1, "2025-09-06": 1, "2025-09-20": 1, "2025-09-27": 0, "2025-10-11": 0, "2025-10-18": 1, "2025-11-01": 1, "2025-11-15": 1, "2025-11-29": 0, "2025-12-27": 1}}, {"name": "Оля Лис", "attendance": {"2025-01-04": 0, "2025-01-18": 1, "2025-02-08": 1, "2025-02-15": 1, "2025-02-22": 1, "2025-03-01": 1, "2025-03-22": 0, "2025-03-29": 1, "2025-04-12": 0, "2025-05-03": 1, "2025-05-24": 1, "2025-06-07": 1, "2025-06-14": 1, "2025-06-21": 1, "2025-07-05": 1, "2025-08-16": 1, "2025-08-23": 1, "2025-08-30": 0, "2025-08-30__dup1": 0, "2025-09-06": 0, "2025-09-20": 1, "2025-09-27": 1, "2025-10-11": 1, "2025-10-18": 0, "2025-11-01": 1, "2025-11-15": 0, "2025-11-29": 1, "2025-12-27": 1}}, {"name": "Оля Назарук", "attendance": {"2025-01-04": 0, "2025-01-18": 0, "2025-02-08": 1, "2025-02-15": 1, "2025-02-22": 0, "2025-03-01": 1, "2025-03-22": 0, "2025-03-29": 1, "2025-04-12": 0, "2025-05-03": 1, "2025-05-24": 1, "2025-06-07": 0, "2025-06-14": 1, "2025-06-21": 1, "2025-07-05": 1, "2025-08-16": 1, "2025-08-23": 0, "2025-08-30": 1, "2025-08-30__dup1": 1, "2025-09-06": 1, "2025-09-20": 1, "2025-09-27": 1, "2025-10-11": 0, "2025-10-18": 1, "2025-11-01": 1, "2025-11-15": 1, "2025-11-29": 1, "2025-12-27": 1}}, {"name": "Паша", "attendance": {"2025-01-04": 1, "2025-01-18": 1, "2025-02-08": 1, "2025-02-15": 0, "2025-02-22": 1, "2025-03-01": 0, "2025-03-22": 0, "2025-03-29": 0, "2025-04-12": 0, "2025-05-03": 0, "2025-05-24": 1, "2025-06-07": 0, "2025-06-14": 0, "2025-06-21": null, "2025-07-05": 1, "2025-08-16": 0, "2025-08-23": 1, "2025-08-30": 0, "2025-08-30__dup1": 0, "2025-09-06": 1, "2025-09-20": 0, "2025-09-27": 1, "2025-10-11": 1, "2025-10-18": 1, "2025-11-01": 0, "2025-11-15": 0, "2025-11-29": 1, "2025-12-27": 1}}, {"name": "Петро", "attendance": {"2025-01-04": 0, "2025-01-18": 1, "2025-02-08": 1, "2025-02-15": 1, "2025-02-22": 0, "2025-03-01": 1, "2025-03-22": 1, "2025-03-29": 1, "2025-04-12": 1, "2025-05-03": 1, "2025-05-24": 1, "2025-06-07": 0, "2025-06-14": 0, "2025-06-21": 0, "2025-07-05": 0, "2025-08-16": 1, "2025-08-23": 1, "2025-08-30": 1, "2025-08-30__dup1": 1, "2025-09-06": 1, "2025-09-20": 0, "2025-09-27": null, "2025-10-11": 0, "2025-10-18": 1, "2025-11-01": 0, "2025-11-15": 1, "2025-11-29": 1, "2025-12-27": 1}}, {"name": "Руслан", "attendance": {"2025-01-04": 1, "2025-01-18": 0, "2025-02-08": 1, "2025-02-15": 1, "2025-02-22": 1, "2025-03-01": 1, "2025-03-22": 1, "2025-03-29": 1, "2025-04-12": 1, "2025-05-03": 1, "2025-05-24": 1, "2025-06-07": 0, "2025-06-14": 0, "2025-06-21": 0, "2025-07-05": 1, "2025-08-16": 1, "2025-08-23": 1, "2025-08-30": 1, "2025-08-30__dup1": 1, "2025-09-06": 1, "2025-09-20": 0, "2025-09-27": 1, "2025-10-11": 1, "2025-10-18": 1, "2025-11-01": 0, "2025-11-15": 1, "2025-11-29": 1, "2025-12-27": 1}}, {"name": "Сімона", "attendance": {"2025-01-04": 1, "2025-01-18": 1, "2025-02-08": 1, "2025-02-15": 1, "2025-02-22": 1, "2025-03-01": 1, "2025-03-22": 0, "2025-03-29": 1, "2025-04-12": 1, "2025-05-03": 1, "2025-05-24": 1, "2025-06-07": 0, "2025-06-14": 0, "2025-06-21": 0, "2025-07-05": 0, "2025-08-16": 0, "2025-08-23": 1, "2025-08-30": 1, "2025-08-30__dup1": 1, "2025-09-06": 0, "2025-09-20": 1, "2025-09-27": 0, "2025-10-11": 1, "2025-10-18": 0, "2025-11-01": 1, "2025-11-15": 0, "2025-11-29": 0, "2025-12-27": 0}}, {"name": "Софія", "attendance": {"2025-01-04": 1, "2025-01-18": 1, "2025-02-08": 1, "2025-02-15": 1, "2025-02-22": 1, "2025-03-01": 1, "2025-03-22": 0, "2025-03-29": 1, "2025-04-12": 0, "2025-05-03": 1, "2025-05-24": 1, "2025-06-07": 1, "2025-06-14": 1, "2025-06-21": 1, "2025-07-05": 1, "2025-08-16": 1, "2025-08-23": 1, "2025-08-30": 0, "2025-08-30__dup1": 0, "2025-09-06": 0, "2025-09-20": 1, "2025-09-27": 1, "2025-10-11": 1, "2025-10-18": 0, "2025-11-01": 1, "2025-11-15": 0, "2025-11-29": 1, "2025-12-27": 1}}, {"name": "Таня Дікал", "attendance": {"2025-01-04": 1, "2025-01-18": 1, "2025-02-08": 0, "2025-02-15": 1, "2025-02-22": 0, "2025-03-01": 1, "2025-03-22": 1, "2025-03-29": 1, "2025-04-12": 1, "2025-05-03": 1, "2025-05-24": 1, "2025-06-07": 1, "2025-06-14": 0, "2025-06-21": 0, "2025-07-05": 0, "2025-08-16": 1, "2025-08-23": 0, "2025-08-30": 1, "2025-08-30__dup1": 1, "2025-09-06": 0, "2025-09-20": 1, "2025-09-27": 1, "2025-10-11": 0, "2025-10-18": 0, "2025-11-01": 1, "2025-11-15": 1, "2025-11-29": 0, "2025-12-27": 1}}, {"name": "Таня Мельник", "attendance": {"2025-01-04": 1, "2025-01-18": 1, "2025-02-08": 1, "2025-02-15": 1, "2025-02-22": 1, "2025-03-01": 0, "2025-03-22": 0, "2025-03-29": 1, "2025-04-12": 1, "2025-05-03": 0, "2025-05-24": 0, "2025-06-07": 1, "2025-06-14": 1, "2025-06-21": 1, "2025-07-05": 1, "2025-08-16": 1, "2025-08-23": 1, "2025-08-30": 0, "2025-08-30__dup1": 0, "2025-09-06": 1, "2025-09-20": 1, "2025-09-27": 1, "2025-10-11": 1, "2025-10-18": 0, "2025-11-01": 0, "2025-11-15": 1, "2025-11-29": 0, "2025-12-27": 0}}, {"name": "Флора", "attendance": {"2025-01-04": 1, "2025-01-18": 1, "2025-02-08": 1, "2025-02-15": 1, "2025-02-22": 1, "2025-03-01": 0, "2025-03-22": 1, "2025-03-29": 1, "2025-04-12": 1, "2025-05-03": 0, "2025-05-24": 1, "2025-06-07": 1, "2025-06-14": 1, "2025-06-21": 1, "2025-07-05": 1, "2025-08-16": 1, "2025-08-23": 1, "2025-08-30": 1, "2025-08-30__dup1": 1, "2025-09-06": 1, "2025-09-20": 1, "2025-09-27": 1, "2025-10-11": 1, "2025-10-18": 1, "2025-11-01": 0, "2025-11-15": 1, "2025-11-29": 1, "2025-12-27": 1}}, {"name": "Яна", "attendance": {"2025-01-04": 0, "2025-01-18": 1, "2025-02-08": 0, "2025-02-15": 1, "2025-02-22": 1, "2025-03-01": 1, "2025-03-22": 0, "2025-03-29": 1, "2025-04-12": 1, "2025-05-03": 0, "2025-05-24": 0, "2025-06-07": 0, "2025-06-14": 0, "2025-06-21": 0, "2025-07-05": 0, "2025-08-16": 0, "2025-08-23": 1, "2025-08-30": 0, "2025-08-30__dup1": 0, "2025-09-06": 0, "2025-09-20": 0, "2025-09-27": 0, "2025-10-11": 0, "2025-10-18": 0, "2025-11-01": 0, "2025-11-15": 0, "2025-11-29": 1, "2025-12-27": 0}}]}, "2026": {"dates": ["2026-01-17", "2026-01-31", "2026-02-07", "2026-02-14", "2026-02-28", "2026-03-07", "2026-03-21", "2026-03-28", "2026-04-18"], "people": [{"name": "Алла", "attendance": {"2026-01-17": 0, "2026-01-31": 1, "2026-02-07": 1, "2026-02-14": 1, "2026-02-28": 1, "2026-03-07": 1, "2026-03-21": 0, "2026-03-28": 0, "2026-04-18": 1}}, {"name": "Альберт", "attendance": {"2026-01-17": 1, "2026-01-31": 1, "2026-02-07": 1, "2026-02-14": 1, "2026-02-28": 1, "2026-03-07": 1, "2026-03-21": 1, "2026-03-28": 1, "2026-04-18": 1}}, {"name": "Ангеліна", "attendance": {"2026-01-17": 0, "2026-01-31": 1, "2026-02-07": 1, "2026-02-14": 0, "2026-02-28": 0, "2026-03-07": 0, "2026-03-21": 0, "2026-03-28": 0, "2026-04-18": 0}}, {"name": "Артем", "attendance": {"2026-01-17": 1, "2026-01-31": 1, "2026-02-07": 1, "2026-02-14": 1, "2026-02-28": 1, "2026-03-07": 1, "2026-03-21": 1, "2026-03-28": 1, "2026-04-18": 1}}, {"name": "Арсен", "attendance": {"2026-01-17": 0, "2026-01-31": 0, "2026-02-07": 0, "2026-02-14": 1, "2026-02-28": 1, "2026-03-07": 0, "2026-03-21": 0, "2026-03-28": 0, "2026-04-18": 0}}, {"name": "Богдан", "attendance": {"2026-01-17": 1, "2026-01-31": 1, "2026-02-07": 1, "2026-02-14": 1, "2026-02-28": 1, "2026-03-07": 1, "2026-03-21": 0, "2026-03-28": 1, "2026-04-18": 1}}, {"name": "Віка Ільюк", "attendance": {"2026-01-17": 1, "2026-01-31": 1, "2026-02-07": 0, "2026-02-14": 1, "2026-02-28": 1, "2026-03-07": 1, "2026-03-21": 0, "2026-03-28": 1, "2026-04-18": 1}}, {"name": "Віка О", "attendance": {"2026-01-17": 0, "2026-01-31": 0, "2026-02-07": 0, "2026-02-14": 0, "2026-02-28": 0, "2026-03-07": 0, "2026-03-21": 0, "2026-03-28": 0, "2026-04-18": 0}}, {"name": "Віка Сінькова", "attendance": {"2026-01-17": 1, "2026-01-31": 1, "2026-02-07": 1, "2026-02-14": 1, "2026-02-28": 1, "2026-03-07": 1, "2026-03-21": 1, "2026-03-28": 1, "2026-04-18": 1}}, {"name": "Віллі", "attendance": {"2026-01-17": 0, "2026-01-31": 0, "2026-02-07": 1, "2026-02-14": 0, "2026-02-28": 1, "2026-03-07": 1, "2026-03-21": 0, "2026-03-28": 0, "2026-04-18": 0}}, {"name": "Віталік", "attendance": {"2026-01-17": 1, "2026-01-31": 1, "2026-02-07": 1, "2026-02-14": 1, "2026-02-28": 1, "2026-03-07": 1, "2026-03-21": 0, "2026-03-28": 1, "2026-04-18": 1}}, {"name": "Вова", "attendance": {"2026-01-17": 1, "2026-01-31": 1, "2026-02-07": 1, "2026-02-14": 1, "2026-02-28": 1, "2026-03-07": 1, "2026-03-21": 1, "2026-03-28": 1, "2026-04-18": 1}}, {"name": "Діана", "attendance": {"2026-01-17": 0, "2026-01-31": 1, "2026-02-07": 0, "2026-02-14": 0, "2026-02-28": 0, "2026-03-07": 1, "2026-03-21": 0, "2026-03-28": 0, "2026-04-18": 1}}, {"name": "Еріка", "attendance": {"2026-01-17": 0, "2026-01-31": 0, "2026-02-07": 1, "2026-02-14": 1, "2026-02-28": 1, "2026-03-07": 1, "2026-03-21": 0, "2026-03-28": 1, "2026-04-18": 1}}, {"name": "Єва", "attendance": {"2026-01-17": 0, "2026-01-31": 0, "2026-02-07": 0, "2026-02-14": null, "2026-02-28": null, "2026-03-07": null, "2026-03-21": null, "2026-03-28": null, "2026-04-18": null}}, {"name": "Єлисей", "attendance": {"2026-01-17": 1, "2026-01-31": 1, "2026-02-07": 0, "2026-02-14": 1, "2026-02-28": 1, "2026-03-07": 1, "2026-03-21": 1, "2026-03-28": 1, "2026-04-18": 1}}, {"name": "Ілля", "attendance": {"2026-01-17": 0, "2026-01-31": 0, "2026-02-07": 0, "2026-02-14": null, "2026-02-28": null, "2026-03-07": null, "2026-03-21": null, "2026-03-28": null, "2026-04-18": null}}, {"name": "Катя", "attendance": {"2026-01-17": 1, "2026-01-31": 1, "2026-02-07": 1, "2026-02-14": 1, "2026-02-28": 1, "2026-03-07": 1, "2026-03-21": 1, "2026-03-28": 1, "2026-04-18": 1}}, {"name": "Марія", "attendance": {"2026-01-17": 0, "2026-01-31": 1, "2026-02-07": 1, "2026-02-14": 0, "2026-02-28": 0, "2026-03-07": 1, "2026-03-21": 0, "2026-03-28": 0, "2026-04-18": 1}}, {"name": "Марта", "attendance": {"2026-01-17": 1, "2026-01-31": 0, "2026-02-07": 0, "2026-02-14": 0, "2026-02-28": 0, "2026-03-07": 0, "2026-03-21": 0, "2026-03-28": 0, "2026-04-18": 0}}, {"name": "Міша Марчук", "attendance": {"2026-01-17": 1, "2026-01-31": 1, "2026-02-07": 0, "2026-02-14": 1, "2026-02-28": 1, "2026-03-07": 0, "2026-03-21": 1, "2026-03-28": 1, "2026-04-18": 0}}, {"name": "Міша Москвич", "attendance": {"2026-01-17": 1, "2026-01-31": 1, "2026-02-07": 0, "2026-02-14": 1, "2026-02-28": 1, "2026-03-07": 1, "2026-03-21": 0, "2026-03-28": 1, "2026-04-18": 1}}, {"name": "Міша Назарук", "attendance": {"2026-01-17": 0, "2026-01-31": 0, "2026-02-07": 1, "2026-02-14": 1, "2026-02-28": 1, "2026-03-07": 1, "2026-03-21": 0, "2026-03-28": 1, "2026-04-18": 0}}, {"name": "Назар", "attendance": {"2026-01-17": 0, "2026-01-31": 1, "2026-02-07": 0, "2026-02-14": 0, "2026-02-28": 0, "2026-03-07": 1, "2026-03-21": 0, "2026-03-28": 0, "2026-04-18": 1}}, {"name": "Оля Лис", "attendance": {"2026-01-17": 0, "2026-01-31": 1, "2026-02-07": 1, "2026-02-14": 1, "2026-02-28": 1, "2026-03-07": 0, "2026-03-21": 0, "2026-03-28": 0, "2026-04-18": 1}}, {"name": "Оля Назарук", "attendance": {"2026-01-17": 0, "2026-01-31": 1, "2026-02-07": 1, "2026-02-14": 1, "2026-02-28": 1, "2026-03-07": 1, "2026-03-21": 0, "2026-03-28": 1, "2026-04-18": 0}}, {"name": "Паша", "attendance": {"2026-01-17": 1, "2026-01-31": 1, "2026-02-07": 1, "2026-02-14": 1, "2026-02-28": 1, "2026-03-07": 1, "2026-03-21": 0, "2026-03-28": 1, "2026-04-18": 1}}, {"name": "Петро", "attendance": {"2026-01-17": 0, "2026-01-31": 1, "2026-02-07": 0, "2026-02-14": 1, "2026-02-28": 1, "2026-03-07": 0, "2026-03-21": 1, "2026-03-28": 0, "2026-04-18": 0}}, {"name": "Руслан", "attendance": {"2026-01-17": 1, "2026-01-31": 1, "2026-02-07": 0, "2026-02-14": 1, "2026-02-28": 1, "2026-03-07": 1, "2026-03-21": 1, "2026-03-28": 1, "2026-04-18": 0}}, {"name": "Сімона", "attendance": {"2026-01-17": 0, "2026-01-31": 0, "2026-02-07": 1, "2026-02-14": 1, "2026-02-28": 1, "2026-03-07": 1, "2026-03-21": 0, "2026-03-28": 1, "2026-04-18": 1}}, {"name": "Софія", "attendance": {"2026-01-17": 0, "2026-01-31": 1, "2026-02-07": 1, "2026-02-14": 1, "2026-02-28": 1, "2026-03-07": 1, "2026-03-21": 0, "2026-03-28": 0, "2026-04-18": 1}}, {"name": "Таня Дікал", "attendance": {"2026-01-17": 0, "2026-01-31": 1, "2026-02-07": 0, "2026-02-14": 0, "2026-02-28": 0, "2026-03-07": 1, "2026-03-21": 0, "2026-03-28": 0, "2026-04-18": 1}}, {"name": "Таня Мельник", "attendance": {"2026-01-17": 1, "2026-01-31": 0, "2026-02-07": 1, "2026-02-14": 0, "2026-02-28": 1, "2026-03-07": 1, "2026-03-21": 0, "2026-03-28": 0, "2026-04-18": 0}}, {"name": "Флора", "attendance": {"2026-01-17": 1, "2026-01-31": 1, "2026-02-07": 1, "2026-02-14": 1, "2026-02-28": 0, "2026-03-07": 1, "2026-03-21": 1, "2026-03-28": 1, "2026-04-18": 1}}, {"name": "Яна", "attendance": {"2026-01-17": 1, "2026-01-31": 1, "2026-02-07": 0, "2026-02-14": 0, "2026-02-28": 0, "2026-03-07": 0, "2026-03-21": 0, "2026-03-28": 0, "2026-04-18": 0}}]}};
+// ── Google Sheets Live Data ──
+const SHEET_2025 = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS_bexjwScluBFUXSEfHUzUpsxXCY1Ls0dyztc_OL4W3PbMJYVFKje2U4rTikn9HqpWULpGqAFsoBlS/pub?gid=391645348&single=true&output=csv';
+const SHEET_2026 = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS_bexjwScluBFUXSEfHUzUpsxXCY1Ls0dyztc_OL4W3PbMJYVFKje2U4rTikn9HqpWULpGqAFsoBlS/pub?gid=0&single=true&output=csv';
+
+function parseCSV(text) {
+  // Split rows, handle quoted cells with commas
+  const rows = [];
+  const lines = text.split('\n');
+  for (const line of lines) {
+    const row = [];
+    let cell = '', inQ = false;
+    for (let i = 0; i < line.length; i++) {
+      const c = line[i];
+      if (c === '"') { inQ = !inQ; }
+      else if (c === ',' && !inQ) { row.push(cell.trim()); cell = ''; }
+      else { cell += c; }
+    }
+    row.push(cell.trim());
+    rows.push(row);
+  }
+  return rows;
+}
+
+function parseDate(str) {
+  if (!str) return null;
+  // Try YYYY-MM-DD, DD.MM.YYYY, M/D/YYYY etc.
+  str = str.replace(/^["\s]+|["\s]+$/g, '');
+  let d = new Date(str);
+  if (!isNaN(d)) return d.toISOString().slice(0, 10);
+  // DD.MM.YYYY
+  const m = str.match(/^(\d{1,2})\.(\d{1,2})\.(\d{4})$/);
+  if (m) d = new Date(`${m[3]}-${m[2].padStart(2,'0')}-${m[1].padStart(2,'0')}`);
+  return isNaN(d) ? null : d.toISOString().slice(0, 10);
+}
+
+function sheetToData(csvText) {
+  const rows = parseCSV(csvText);
+  if (!rows.length) return { dates: [], people: [] };
+
+  const header = rows[0];
+  // Find columns with valid dates
+  const dateCols = [];
+  header.forEach((cell, i) => {
+    if (i === 0) return;
+    const d = parseDate(cell);
+    if (d) dateCols.push({ idx: i, date: d });
+  });
+
+  // Only keep dates where at least one person has 0 or 1
+  const activeCols = dateCols.filter(col =>
+    rows.slice(1).some(row => row[col.idx] === '0' || row[col.idx] === '1')
+  );
+
+  const dates = activeCols.map(c => c.date);
+
+  const people = rows.slice(1).map(row => {
+    const name = (row[0] || '').replace(/^"+|"+$/g, '').trim();
+    if (!name || name === 'ПІБ/Дата') return null;
+    const attendance = {};
+    activeCols.forEach(col => {
+      const v = row[col.idx];
+      attendance[col.date] = v === '1' ? 1 : v === '0' ? 0 : null;
+    });
+    return { name, attendance };
+  }).filter(Boolean);
+
+  return { dates, people };
+}
+
+// ── Embedded fallback data (always works, even locally) ──
+const FALLBACK_DATA = {"2025": {"dates": ["2025-01-04", "2025-01-18", "2025-02-08", "2025-02-15", "2025-02-22", "2025-03-01", "2025-03-22", "2025-03-29", "2025-04-12", "2025-05-03", "2025-05-24", "2025-06-07", "2025-06-14", "2025-06-21", "2025-07-05", "2025-08-16", "2025-08-23", "2025-08-30", "2025-08-30", "2025-09-06", "2025-09-20", "2025-09-27", "2025-10-11", "2025-10-18", "2025-11-01", "2025-11-15", "2025-11-29", "2025-12-27"], "people": [{"name": "Алла", "attendance": {"2025-01-04": 1, "2025-01-18": 1, "2025-02-08": 1, "2025-02-15": 1, "2025-02-22": 1, "2025-03-01": 1, "2025-03-22": 0, "2025-03-29": 1, "2025-04-12": 0, "2025-05-03": 1, "2025-05-24": 1, "2025-06-07": 1, "2025-06-14": 0, "2025-06-21": 0, "2025-07-05": 1, "2025-08-16": 0, "2025-08-23": 1, "2025-08-30": 0, "2025-09-06": 0, "2025-09-20": 0, "2025-09-27": 0, "2025-10-11": 1, "2025-10-18": 0, "2025-11-01": 0, "2025-11-15": 0, "2025-11-29": 1, "2025-12-27": 0}}, {"name": "Альберт", "attendance": {"2025-01-04": 0, "2025-01-18": 1, "2025-02-08": 1, "2025-02-15": 1, "2025-02-22": 1, "2025-03-01": 1, "2025-03-22": 0, "2025-03-29": 1, "2025-04-12": 1, "2025-05-03": 1, "2025-05-24": 1, "2025-06-07": 1, "2025-06-14": 1, "2025-06-21": 1, "2025-07-05": 0, "2025-08-16": 1, "2025-08-23": 1, "2025-08-30": 0, "2025-09-06": 1, "2025-09-20": 0, "2025-09-27": 1, "2025-10-11": 0, "2025-10-18": 1, "2025-11-01": 1, "2025-11-15": 1, "2025-11-29": 1, "2025-12-27": 0}}, {"name": "Ангеліна", "attendance": {"2025-01-04": 0, "2025-01-18": 1, "2025-02-08": 1, "2025-02-15": 1, "2025-02-22": 1, "2025-03-01": 1, "2025-03-22": 0, "2025-03-29": 1, "2025-04-12": 1, "2025-05-03": 1, "2025-05-24": 1, "2025-06-07": 1, "2025-06-14": 1, "2025-06-21": 1, "2025-07-05": 0, "2025-08-16": 1, "2025-08-23": 0, "2025-08-30": 0, "2025-09-06": 0, "2025-09-20": 0, "2025-09-27": 0, "2025-10-11": 0, "2025-10-18": 0, "2025-11-01": 0, "2025-11-15": 0, "2025-11-29": 0, "2025-12-27": 0}}, {"name": "Артем", "attendance": {"2025-01-04": 1, "2025-01-18": 0, "2025-02-08": 1, "2025-02-15": 1, "2025-02-22": 1, "2025-03-01": 1, "2025-03-22": 1, "2025-03-29": 1, "2025-04-12": 1, "2025-05-03": 1, "2025-05-24": 1, "2025-06-07": 1, "2025-06-14": 1, "2025-06-21": 1, "2025-07-05": 1, "2025-08-16": 1, "2025-08-23": 1, "2025-08-30": 1, "2025-09-06": 1, "2025-09-20": 1, "2025-09-27": 1, "2025-10-11": 1, "2025-10-18": 1, "2025-11-01": 1, "2025-11-15": 1, "2025-11-29": 1, "2025-12-27": 1}}, {"name": "Арсен", "attendance": {"2025-01-04": null, "2025-01-18": null, "2025-02-08": null, "2025-02-15": null, "2025-02-22": null, "2025-03-01": null, "2025-03-22": null, "2025-03-29": null, "2025-04-12": null, "2025-05-03": null, "2025-05-24": null, "2025-06-07": null, "2025-06-14": null, "2025-06-21": null, "2025-07-05": null, "2025-08-16": null, "2025-08-23": 1, "2025-08-30": 1, "2025-09-06": 1, "2025-09-20": 0, "2025-09-27": 0, "2025-10-11": 0, "2025-10-18": 0, "2025-11-01": 0, "2025-11-15": 0, "2025-11-29": 0, "2025-12-27": 1}}, {"name": "Богдан", "attendance": {"2025-01-04": 1, "2025-01-18": 1, "2025-02-08": 1, "2025-02-15": 1, "2025-02-22": 1, "2025-03-01": 1, "2025-03-22": 1, "2025-03-29": 1, "2025-04-12": 1, "2025-05-03": 1, "2025-05-24": 1, "2025-06-07": 1, "2025-06-14": 1, "2025-06-21": 1, "2025-07-05": 1, "2025-08-16": 1, "2025-08-23": 1, "2025-08-30": 0, "2025-09-06": 1, "2025-09-20": 1, "2025-09-27": 1, "2025-10-11": 1, "2025-10-18": 1, "2025-11-01": 0, "2025-11-15": 0, "2025-11-29": 1, "2025-12-27": 1}}, {"name": "Віка Ільюк", "attendance": {"2025-01-04": 0, "2025-01-18": 1, "2025-02-08": 0, "2025-02-15": 1, "2025-02-22": 1, "2025-03-01": 1, "2025-03-22": 0, "2025-03-29": 1, "2025-04-12": 0, "2025-05-03": 0, "2025-05-24": 1, "2025-06-07": 1, "2025-06-14": 1, "2025-06-21": 1, "2025-07-05": 1, "2025-08-16": 1, "2025-08-23": 0, "2025-08-30": 0, "2025-09-06": 1, "2025-09-20": 1, "2025-09-27": 1, "2025-10-11": 1, "2025-10-18": 1, "2025-11-01": 1, "2025-11-15": 1, "2025-11-29": 1, "2025-12-27": 1}}, {"name": "Віка О", "attendance": {"2025-01-04": 0, "2025-01-18": 0, "2025-02-08": 0, "2025-02-15": 0, "2025-02-22": 0, "2025-03-01": 0, "2025-03-22": 0, "2025-03-29": 0, "2025-04-12": 0, "2025-05-03": 0, "2025-05-24": 0, "2025-06-07": 0, "2025-06-14": 0, "2025-06-21": 0, "2025-07-05": 0, "2025-08-16": 0, "2025-08-23": 0, "2025-08-30": 0, "2025-09-06": 0, "2025-09-20": 0, "2025-09-27": 0, "2025-10-11": 0, "2025-10-18": 0, "2025-11-01": 0, "2025-11-15": 0, "2025-11-29": 0, "2025-12-27": 0}}, {"name": "Віка Сінькова", "attendance": {"2025-01-04": 1, "2025-01-18": 1, "2025-02-08": 1, "2025-02-15": 1, "2025-02-22": 1, "2025-03-01": 0, "2025-03-22": 1, "2025-03-29": 1, "2025-04-12": 1, "2025-05-03": 1, "2025-05-24": 1, "2025-06-07": 1, "2025-06-14": 1, "2025-06-21": 1, "2025-07-05": 1, "2025-08-16": 1, "2025-08-23": 1, "2025-08-30": 1, "2025-09-06": 1, "2025-09-20": 1, "2025-09-27": 1, "2025-10-11": 1, "2025-10-18": 1, "2025-11-01": 1, "2025-11-15": 1, "2025-11-29": 1, "2025-12-27": 1}}, {"name": "Віллі", "attendance": {"2025-01-04": 1, "2025-01-18": 1, "2025-02-08": 1, "2025-02-15": 0, "2025-02-22": 1, "2025-03-01": 1, "2025-03-22": 0, "2025-03-29": 0, "2025-04-12": 0, "2025-05-03": 1, "2025-05-24": 1, "2025-06-07": 1, "2025-06-14": 0, "2025-06-21": 0, "2025-07-05": 0, "2025-08-16": 0, "2025-08-23": 1, "2025-08-30": 1, "2025-09-06": 0, "2025-09-20": 0, "2025-09-27": 0, "2025-10-11": 1, "2025-10-18": 0, "2025-11-01": 0, "2025-11-15": 0, "2025-11-29": 0, "2025-12-27": 0}}, {"name": "Віталік", "attendance": {"2025-01-04": null, "2025-01-18": null, "2025-02-08": 1, "2025-02-15": 1, "2025-02-22": 1, "2025-03-01": 1, "2025-03-22": 1, "2025-03-29": 1, "2025-04-12": 1, "2025-05-03": 1, "2025-05-24": 1, "2025-06-07": 1, "2025-06-14": 1, "2025-06-21": 1, "2025-07-05": 1, "2025-08-16": 1, "2025-08-23": 1, "2025-08-30": 0, "2025-09-06": 1, "2025-09-20": 1, "2025-09-27": 1, "2025-10-11": 1, "2025-10-18": 1, "2025-11-01": 0, "2025-11-15": 1, "2025-11-29": 1, "2025-12-27": 1}}, {"name": "Вова", "attendance": {"2025-01-04": 1, "2025-01-18": 1, "2025-02-08": 1, "2025-02-15": 1, "2025-02-22": 1, "2025-03-01": 1, "2025-03-22": 1, "2025-03-29": 0, "2025-04-12": 1, "2025-05-03": 1, "2025-05-24": 1, "2025-06-07": 1, "2025-06-14": 1, "2025-06-21": 1, "2025-07-05": 0, "2025-08-16": 0, "2025-08-23": 1, "2025-08-30": 0, "2025-09-06": 0, "2025-09-20": 1, "2025-09-27": 1, "2025-10-11": 1, "2025-10-18": 1, "2025-11-01": 0, "2025-11-15": 1, "2025-11-29": 1, "2025-12-27": 1}}, {"name": "Діана", "attendance": {"2025-01-04": 1, "2025-01-18": 1, "2025-02-08": 1, "2025-02-15": 1, "2025-02-22": 1, "2025-03-01": 1, "2025-03-22": 1, "2025-03-29": 1, "2025-04-12": 0, "2025-05-03": 0, "2025-05-24": 1, "2025-06-07": 1, "2025-06-14": 1, "2025-06-21": 1, "2025-07-05": 0, "2025-08-16": 1, "2025-08-23": 0, "2025-08-30": 1, "2025-09-06": 0, "2025-09-20": 1, "2025-09-27": 1, "2025-10-11": 0, "2025-10-18": 1, "2025-11-01": 1, "2025-11-15": 1, "2025-11-29": 0, "2025-12-27": 1}}, {"name": "Еріка", "attendance": {"2025-01-04": 1, "2025-01-18": 1, "2025-02-08": 1, "2025-02-15": 1, "2025-02-22": 1, "2025-03-01": 0, "2025-03-22": 0, "2025-03-29": 1, "2025-04-12": 1, "2025-05-03": 1, "2025-05-24": 1, "2025-06-07": 1, "2025-06-14": 0, "2025-06-21": 0, "2025-07-05": 0, "2025-08-16": 0, "2025-08-23": 1, "2025-08-30": 1, "2025-09-06": 0, "2025-09-20": 1, "2025-09-27": 0, "2025-10-11": 1, "2025-10-18": 0, "2025-11-01": 1, "2025-11-15": 0, "2025-11-29": 0, "2025-12-27": 1}}, {"name": "Єва", "attendance": {"2025-01-04": 0, "2025-01-18": 1, "2025-02-08": 0, "2025-02-15": 0, "2025-02-22": 0, "2025-03-01": 0, "2025-03-22": 1, "2025-03-29": 0, "2025-04-12": 0, "2025-05-03": 0, "2025-05-24": 0, "2025-06-07": 0, "2025-06-14": 0, "2025-06-21": 0, "2025-07-05": 0, "2025-08-16": 0, "2025-08-23": 0, "2025-08-30": 0, "2025-09-06": 0, "2025-09-20": 0, "2025-09-27": 0, "2025-10-11": 0, "2025-10-18": 0, "2025-11-01": 0, "2025-11-15": 0, "2025-11-29": 0, "2025-12-27": 0}}, {"name": "Єлисей", "attendance": {"2025-01-04": 1, "2025-01-18": 1, "2025-02-08": 1, "2025-02-15": 1, "2025-02-22": 1, "2025-03-01": 1, "2025-03-22": 1, "2025-03-29": 1, "2025-04-12": 1, "2025-05-03": 1, "2025-05-24": 1, "2025-06-07": 1, "2025-06-14": 1, "2025-06-21": 1, "2025-07-05": 0, "2025-08-16": 1, "2025-08-23": 1, "2025-08-30": 0, "2025-09-06": 1, "2025-09-20": 1, "2025-09-27": 1, "2025-10-11": 1, "2025-10-18": 1, "2025-11-01": 1, "2025-11-15": 1, "2025-11-29": 1, "2025-12-27": 1}}, {"name": "Ілля", "attendance": {"2025-01-04": 0, "2025-01-18": 1, "2025-02-08": 0, "2025-02-15": 0, "2025-02-22": 0, "2025-03-01": 0, "2025-03-22": 1, "2025-03-29": 0, "2025-04-12": 0, "2025-05-03": 0, "2025-05-24": 0, "2025-06-07": 0, "2025-06-14": 0, "2025-06-21": 0, "2025-07-05": 0, "2025-08-16": 0, "2025-08-23": 0, "2025-08-30": 0, "2025-09-06": 0, "2025-09-20": 0, "2025-09-27": 0, "2025-10-11": 0, "2025-10-18": 0, "2025-11-01": 0, "2025-11-15": 0, "2025-11-29": 0, "2025-12-27": 0}}, {"name": "Катя", "attendance": {"2025-01-04": null, "2025-01-18": null, "2025-02-08": 1, "2025-02-15": 1, "2025-02-22": 1, "2025-03-01": 1, "2025-03-22": 1, "2025-03-29": 1, "2025-04-12": 1, "2025-05-03": 1, "2025-05-24": 1, "2025-06-07": 1, "2025-06-14": 1, "2025-06-21": 1, "2025-07-05": 1, "2025-08-16": 1, "2025-08-23": 1, "2025-08-30": 1, "2025-09-06": 1, "2025-09-20": 1, "2025-09-27": 1, "2025-10-11": 1, "2025-10-18": 1, "2025-11-01": 1, "2025-11-15": 1, "2025-11-29": 1, "2025-12-27": 1}}, {"name": "Марія", "attendance": {"2025-01-04": 1, "2025-01-18": 1, "2025-02-08": 1, "2025-02-15": 1, "2025-02-22": 1, "2025-03-01": 1, "2025-03-22": 1, "2025-03-29": 1, "2025-04-12": 0, "2025-05-03": 0, "2025-05-24": 1, "2025-06-07": 1, "2025-06-14": 1, "2025-06-21": 1, "2025-07-05": 0, "2025-08-16": 1, "2025-08-23": 1, "2025-08-30": 1, "2025-09-06": 0, "2025-09-20": 1, "2025-09-27": 1, "2025-10-11": 0, "2025-10-18": 1, "2025-11-01": 1, "2025-11-15": 1, "2025-11-29": 0, "2025-12-27": 1}}, {"name": "Марта", "attendance": {"2025-01-04": null, "2025-01-18": null, "2025-02-08": null, "2025-02-15": null, "2025-02-22": null, "2025-03-01": null, "2025-03-22": null, "2025-03-29": null, "2025-04-12": null, "2025-05-03": null, "2025-05-24": null, "2025-06-07": null, "2025-06-14": null, "2025-06-21": null, "2025-07-05": null, "2025-08-16": null, "2025-08-23": null, "2025-08-30": null, "2025-09-06": null, "2025-09-20": 1, "2025-09-27": 1, "2025-10-11": 0, "2025-10-18": 0, "2025-11-01": 0, "2025-11-15": 0, "2025-11-29": 0, "2025-12-27": 1}}, {"name": "Міша Марчук", "attendance": {"2025-01-04": 1, "2025-01-18": 0, "2025-02-08": 1, "2025-02-15": 1, "2025-02-22": 1, "2025-03-01": 0, "2025-03-22": 0, "2025-03-29": 1, "2025-04-12": 0, "2025-05-03": 0, "2025-05-24": 1, "2025-06-07": 1, "2025-06-14": 0, "2025-06-21": 0, "2025-07-05": 1, "2025-08-16": 1, "2025-08-23": 1, "2025-08-30": 1, "2025-09-06": 0, "2025-09-20": 0, "2025-09-27": 1, "2025-10-11": 1, "2025-10-18": 1, "2025-11-01": 0, "2025-11-15": 0, "2025-11-29": 1, "2025-12-27": 1}}, {"name": "Міша Москвич", "attendance": {"2025-01-04": 1, "2025-01-18": 1, "2025-02-08": 0, "2025-02-15": 0, "2025-02-22": 1, "2025-03-01": 0, "2025-03-22": 0, "2025-03-29": 0, "2025-04-12": 0, "2025-05-03": 1, "2025-05-24": 0, "2025-06-07": 0, "2025-06-14": 0, "2025-06-21": 0, "2025-07-05": 0, "2025-08-16": 1, "2025-08-23": 1, "2025-08-30": 0, "2025-09-06": 1, "2025-09-20": 1, "2025-09-27": 1, "2025-10-11": 1, "2025-10-18": 0, "2025-11-01": 0, "2025-11-15": 0, "2025-11-29": 1, "2025-12-27": 1}}, {"name": "Міша Назарук", "attendance": {"2025-01-04": 1, "2025-01-18": 0, "2025-02-08": 1, "2025-02-15": 1, "2025-02-22": 1, "2025-03-01": 1, "2025-03-22": 0, "2025-03-29": 1, "2025-04-12": 1, "2025-05-03": 1, "2025-05-24": 1, "2025-06-07": 1, "2025-06-14": 0, "2025-06-21": 0, "2025-07-05": 0, "2025-08-16": 0, "2025-08-23": 1, "2025-08-30": 1, "2025-09-06": 0, "2025-09-20": 0, "2025-09-27": 0, "2025-10-11": 1, "2025-10-18": 0, "2025-11-01": 1, "2025-11-15": 0, "2025-11-29": 0, "2025-12-27": 1}}, {"name": "Назар", "attendance": {"2025-01-04": 1, "2025-01-18": 1, "2025-02-08": 1, "2025-02-15": 1, "2025-02-22": 0, "2025-03-01": 1, "2025-03-22": 0, "2025-03-29": 1, "2025-04-12": 0, "2025-05-03": 0, "2025-05-24": 1, "2025-06-07": 1, "2025-06-14": 1, "2025-06-21": 1, "2025-07-05": 0, "2025-08-16": 1, "2025-08-23": 1, "2025-08-30": 1, "2025-09-06": 1, "2025-09-20": 1, "2025-09-27": 0, "2025-10-11": 0, "2025-10-18": 1, "2025-11-01": 1, "2025-11-15": 1, "2025-11-29": 0, "2025-12-27": 1}}, {"name": "Оля Лис", "attendance": {"2025-01-04": 0, "2025-01-18": 1, "2025-02-08": 1, "2025-02-15": 1, "2025-02-22": 1, "2025-03-01": 1, "2025-03-22": 0, "2025-03-29": 1, "2025-04-12": 0, "2025-05-03": 1, "2025-05-24": 1, "2025-06-07": 1, "2025-06-14": 1, "2025-06-21": 1, "2025-07-05": 1, "2025-08-16": 1, "2025-08-23": 1, "2025-08-30": 0, "2025-09-06": 0, "2025-09-20": 1, "2025-09-27": 1, "2025-10-11": 1, "2025-10-18": 0, "2025-11-01": 1, "2025-11-15": 0, "2025-11-29": 1, "2025-12-27": 1}}, {"name": "Оля Назарук", "attendance": {"2025-01-04": 0, "2025-01-18": 0, "2025-02-08": 1, "2025-02-15": 1, "2025-02-22": 0, "2025-03-01": 1, "2025-03-22": 0, "2025-03-29": 1, "2025-04-12": 0, "2025-05-03": 1, "2025-05-24": 1, "2025-06-07": 0, "2025-06-14": 1, "2025-06-21": 1, "2025-07-05": 1, "2025-08-16": 1, "2025-08-23": 0, "2025-08-30": 1, "2025-09-06": 1, "2025-09-20": 1, "2025-09-27": 1, "2025-10-11": 0, "2025-10-18": 1, "2025-11-01": 1, "2025-11-15": 1, "2025-11-29": 1, "2025-12-27": 1}}, {"name": "Паша", "attendance": {"2025-01-04": 1, "2025-01-18": 1, "2025-02-08": 1, "2025-02-15": 0, "2025-02-22": 1, "2025-03-01": 0, "2025-03-22": 0, "2025-03-29": 0, "2025-04-12": 0, "2025-05-03": 0, "2025-05-24": 1, "2025-06-07": 0, "2025-06-14": 0, "2025-06-21": null, "2025-07-05": 1, "2025-08-16": 0, "2025-08-23": 1, "2025-08-30": 0, "2025-09-06": 1, "2025-09-20": 0, "2025-09-27": 1, "2025-10-11": 1, "2025-10-18": 1, "2025-11-01": 0, "2025-11-15": 0, "2025-11-29": 1, "2025-12-27": 1}}, {"name": "Петро", "attendance": {"2025-01-04": 0, "2025-01-18": 1, "2025-02-08": 1, "2025-02-15": 1, "2025-02-22": 0, "2025-03-01": 1, "2025-03-22": 1, "2025-03-29": 1, "2025-04-12": 1, "2025-05-03": 1, "2025-05-24": 1, "2025-06-07": 0, "2025-06-14": 0, "2025-06-21": 0, "2025-07-05": 0, "2025-08-16": 1, "2025-08-23": 1, "2025-08-30": 1, "2025-09-06": 1, "2025-09-20": 0, "2025-09-27": null, "2025-10-11": 0, "2025-10-18": 1, "2025-11-01": 0, "2025-11-15": 1, "2025-11-29": 1, "2025-12-27": 1}}, {"name": "Руслан", "attendance": {"2025-01-04": 1, "2025-01-18": 0, "2025-02-08": 1, "2025-02-15": 1, "2025-02-22": 1, "2025-03-01": 1, "2025-03-22": 1, "2025-03-29": 1, "2025-04-12": 1, "2025-05-03": 1, "2025-05-24": 1, "2025-06-07": 0, "2025-06-14": 0, "2025-06-21": 0, "2025-07-05": 1, "2025-08-16": 1, "2025-08-23": 1, "2025-08-30": 1, "2025-09-06": 1, "2025-09-20": 0, "2025-09-27": 1, "2025-10-11": 1, "2025-10-18": 1, "2025-11-01": 0, "2025-11-15": 1, "2025-11-29": 1, "2025-12-27": 1}}, {"name": "Сімона", "attendance": {"2025-01-04": 1, "2025-01-18": 1, "2025-02-08": 1, "2025-02-15": 1, "2025-02-22": 1, "2025-03-01": 1, "2025-03-22": 0, "2025-03-29": 1, "2025-04-12": 1, "2025-05-03": 1, "2025-05-24": 1, "2025-06-07": 0, "2025-06-14": 0, "2025-06-21": 0, "2025-07-05": 0, "2025-08-16": 0, "2025-08-23": 1, "2025-08-30": 1, "2025-09-06": 0, "2025-09-20": 1, "2025-09-27": 0, "2025-10-11": 1, "2025-10-18": 0, "2025-11-01": 1, "2025-11-15": 0, "2025-11-29": 0, "2025-12-27": 0}}, {"name": "Софія", "attendance": {"2025-01-04": 1, "2025-01-18": 1, "2025-02-08": 1, "2025-02-15": 1, "2025-02-22": 1, "2025-03-01": 1, "2025-03-22": 0, "2025-03-29": 1, "2025-04-12": 0, "2025-05-03": 1, "2025-05-24": 1, "2025-06-07": 1, "2025-06-14": 1, "2025-06-21": 1, "2025-07-05": 1, "2025-08-16": 1, "2025-08-23": 1, "2025-08-30": 0, "2025-09-06": 0, "2025-09-20": 1, "2025-09-27": 1, "2025-10-11": 1, "2025-10-18": 0, "2025-11-01": 1, "2025-11-15": 0, "2025-11-29": 1, "2025-12-27": 1}}, {"name": "Таня Дікал", "attendance": {"2025-01-04": 1, "2025-01-18": 1, "2025-02-08": 0, "2025-02-15": 1, "2025-02-22": 0, "2025-03-01": 1, "2025-03-22": 1, "2025-03-29": 1, "2025-04-12": 1, "2025-05-03": 1, "2025-05-24": 1, "2025-06-07": 1, "2025-06-14": 0, "2025-06-21": 0, "2025-07-05": 0, "2025-08-16": 1, "2025-08-23": 0, "2025-08-30": 1, "2025-09-06": 0, "2025-09-20": 1, "2025-09-27": 1, "2025-10-11": 0, "2025-10-18": 0, "2025-11-01": 1, "2025-11-15": 1, "2025-11-29": 0, "2025-12-27": 1}}, {"name": "Таня Мельник", "attendance": {"2025-01-04": 1, "2025-01-18": 1, "2025-02-08": 1, "2025-02-15": 1, "2025-02-22": 1, "2025-03-01": 0, "2025-03-22": 0, "2025-03-29": 1, "2025-04-12": 1, "2025-05-03": 0, "2025-05-24": 0, "2025-06-07": 1, "2025-06-14": 1, "2025-06-21": 1, "2025-07-05": 1, "2025-08-16": 1, "2025-08-23": 1, "2025-08-30": 0, "2025-09-06": 1, "2025-09-20": 1, "2025-09-27": 1, "2025-10-11": 1, "2025-10-18": 0, "2025-11-01": 0, "2025-11-15": 1, "2025-11-29": 0, "2025-12-27": 0}}, {"name": "Флора", "attendance": {"2025-01-04": 1, "2025-01-18": 1, "2025-02-08": 1, "2025-02-15": 1, "2025-02-22": 1, "2025-03-01": 0, "2025-03-22": 1, "2025-03-29": 1, "2025-04-12": 1, "2025-05-03": 0, "2025-05-24": 1, "2025-06-07": 1, "2025-06-14": 1, "2025-06-21": 1, "2025-07-05": 1, "2025-08-16": 1, "2025-08-23": 1, "2025-08-30": 1, "2025-09-06": 1, "2025-09-20": 1, "2025-09-27": 1, "2025-10-11": 1, "2025-10-18": 1, "2025-11-01": 0, "2025-11-15": 1, "2025-11-29": 1, "2025-12-27": 1}}, {"name": "Яна", "attendance": {"2025-01-04": 0, "2025-01-18": 1, "2025-02-08": 0, "2025-02-15": 1, "2025-02-22": 1, "2025-03-01": 1, "2025-03-22": 0, "2025-03-29": 1, "2025-04-12": 1, "2025-05-03": 0, "2025-05-24": 0, "2025-06-07": 0, "2025-06-14": 0, "2025-06-21": 0, "2025-07-05": 0, "2025-08-16": 0, "2025-08-23": 1, "2025-08-30": 0, "2025-09-06": 0, "2025-09-20": 0, "2025-09-27": 0, "2025-10-11": 0, "2025-10-18": 0, "2025-11-01": 0, "2025-11-15": 0, "2025-11-29": 1, "2025-12-27": 0}}]}, "2026": {"dates": ["2026-01-17", "2026-01-31", "2026-02-07", "2026-02-14", "2026-02-28", "2026-03-07", "2026-03-21", "2026-03-28", "2026-04-18"], "people": [{"name": "Алла", "attendance": {"2026-01-17": 0, "2026-01-31": 1, "2026-02-07": 1, "2026-02-14": 1, "2026-02-28": 1, "2026-03-07": 1, "2026-03-21": 0, "2026-03-28": 0, "2026-04-18": 1}}, {"name": "Альберт", "attendance": {"2026-01-17": 1, "2026-01-31": 1, "2026-02-07": 1, "2026-02-14": 1, "2026-02-28": 1, "2026-03-07": 1, "2026-03-21": 1, "2026-03-28": 1, "2026-04-18": 1}}, {"name": "Ангеліна", "attendance": {"2026-01-17": 0, "2026-01-31": 1, "2026-02-07": 1, "2026-02-14": 0, "2026-02-28": 0, "2026-03-07": 0, "2026-03-21": 0, "2026-03-28": 0, "2026-04-18": 0}}, {"name": "Артем", "attendance": {"2026-01-17": 1, "2026-01-31": 1, "2026-02-07": 1, "2026-02-14": 1, "2026-02-28": 1, "2026-03-07": 1, "2026-03-21": 1, "2026-03-28": 1, "2026-04-18": 1}}, {"name": "Арсен", "attendance": {"2026-01-17": 0, "2026-01-31": 0, "2026-02-07": 0, "2026-02-14": 1, "2026-02-28": 1, "2026-03-07": 0, "2026-03-21": 0, "2026-03-28": 0, "2026-04-18": 0}}, {"name": "Богдан", "attendance": {"2026-01-17": 1, "2026-01-31": 1, "2026-02-07": 1, "2026-02-14": 1, "2026-02-28": 1, "2026-03-07": 1, "2026-03-21": 0, "2026-03-28": 1, "2026-04-18": 1}}, {"name": "Віка Ільюк", "attendance": {"2026-01-17": 1, "2026-01-31": 1, "2026-02-07": 0, "2026-02-14": 1, "2026-02-28": 1, "2026-03-07": 1, "2026-03-21": 0, "2026-03-28": 1, "2026-04-18": 1}}, {"name": "Віка О", "attendance": {"2026-01-17": 0, "2026-01-31": 0, "2026-02-07": 0, "2026-02-14": 0, "2026-02-28": 0, "2026-03-07": 0, "2026-03-21": 0, "2026-03-28": 0, "2026-04-18": 0}}, {"name": "Віка Сінькова", "attendance": {"2026-01-17": 1, "2026-01-31": 1, "2026-02-07": 1, "2026-02-14": 1, "2026-02-28": 1, "2026-03-07": 1, "2026-03-21": 1, "2026-03-28": 1, "2026-04-18": 1}}, {"name": "Віллі", "attendance": {"2026-01-17": 0, "2026-01-31": 0, "2026-02-07": 1, "2026-02-14": 0, "2026-02-28": 1, "2026-03-07": 1, "2026-03-21": 0, "2026-03-28": 0, "2026-04-18": 0}}, {"name": "Віталік", "attendance": {"2026-01-17": 1, "2026-01-31": 1, "2026-02-07": 1, "2026-02-14": 1, "2026-02-28": 1, "2026-03-07": 1, "2026-03-21": 0, "2026-03-28": 1, "2026-04-18": 1}}, {"name": "Вова", "attendance": {"2026-01-17": 1, "2026-01-31": 1, "2026-02-07": 1, "2026-02-14": 1, "2026-02-28": 1, "2026-03-07": 1, "2026-03-21": 1, "2026-03-28": 1, "2026-04-18": 1}}, {"name": "Діана", "attendance": {"2026-01-17": 0, "2026-01-31": 1, "2026-02-07": 0, "2026-02-14": 0, "2026-02-28": 0, "2026-03-07": 1, "2026-03-21": 0, "2026-03-28": 0, "2026-04-18": 1}}, {"name": "Еріка", "attendance": {"2026-01-17": 0, "2026-01-31": 0, "2026-02-07": 1, "2026-02-14": 1, "2026-02-28": 1, "2026-03-07": 1, "2026-03-21": 0, "2026-03-28": 1, "2026-04-18": 1}}, {"name": "Єва", "attendance": {"2026-01-17": 0, "2026-01-31": 0, "2026-02-07": 0, "2026-02-14": null, "2026-02-28": null, "2026-03-07": null, "2026-03-21": null, "2026-03-28": null, "2026-04-18": null}}, {"name": "Єлисей", "attendance": {"2026-01-17": 1, "2026-01-31": 1, "2026-02-07": 0, "2026-02-14": 1, "2026-02-28": 1, "2026-03-07": 1, "2026-03-21": 1, "2026-03-28": 1, "2026-04-18": 1}}, {"name": "Ілля", "attendance": {"2026-01-17": 0, "2026-01-31": 0, "2026-02-07": 0, "2026-02-14": null, "2026-02-28": null, "2026-03-07": null, "2026-03-21": null, "2026-03-28": null, "2026-04-18": null}}, {"name": "Катя", "attendance": {"2026-01-17": 1, "2026-01-31": 1, "2026-02-07": 1, "2026-02-14": 1, "2026-02-28": 1, "2026-03-07": 1, "2026-03-21": 1, "2026-03-28": 1, "2026-04-18": 1}}, {"name": "Марія", "attendance": {"2026-01-17": 0, "2026-01-31": 1, "2026-02-07": 1, "2026-02-14": 0, "2026-02-28": 0, "2026-03-07": 1, "2026-03-21": 0, "2026-03-28": 0, "2026-04-18": 1}}, {"name": "Марта", "attendance": {"2026-01-17": 1, "2026-01-31": 0, "2026-02-07": 0, "2026-02-14": 0, "2026-02-28": 0, "2026-03-07": 0, "2026-03-21": 0, "2026-03-28": 0, "2026-04-18": 0}}, {"name": "Міша Марчук", "attendance": {"2026-01-17": 1, "2026-01-31": 1, "2026-02-07": 0, "2026-02-14": 1, "2026-02-28": 1, "2026-03-07": 0, "2026-03-21": 1, "2026-03-28": 1, "2026-04-18": 0}}, {"name": "Міша Москвич", "attendance": {"2026-01-17": 1, "2026-01-31": 1, "2026-02-07": 0, "2026-02-14": 1, "2026-02-28": 1, "2026-03-07": 1, "2026-03-21": 0, "2026-03-28": 1, "2026-04-18": 1}}, {"name": "Міша Назарук", "attendance": {"2026-01-17": 0, "2026-01-31": 0, "2026-02-07": 1, "2026-02-14": 1, "2026-02-28": 1, "2026-03-07": 1, "2026-03-21": 0, "2026-03-28": 1, "2026-04-18": 0}}, {"name": "Назар", "attendance": {"2026-01-17": 0, "2026-01-31": 1, "2026-02-07": 0, "2026-02-14": 0, "2026-02-28": 0, "2026-03-07": 1, "2026-03-21": 0, "2026-03-28": 0, "2026-04-18": 1}}, {"name": "Оля Лис", "attendance": {"2026-01-17": 0, "2026-01-31": 1, "2026-02-07": 1, "2026-02-14": 1, "2026-02-28": 1, "2026-03-07": 0, "2026-03-21": 0, "2026-03-28": 0, "2026-04-18": 1}}, {"name": "Оля Назарук", "attendance": {"2026-01-17": 0, "2026-01-31": 1, "2026-02-07": 1, "2026-02-14": 1, "2026-02-28": 1, "2026-03-07": 1, "2026-03-21": 0, "2026-03-28": 1, "2026-04-18": 0}}, {"name": "Паша", "attendance": {"2026-01-17": 1, "2026-01-31": 1, "2026-02-07": 1, "2026-02-14": 1, "2026-02-28": 1, "2026-03-07": 1, "2026-03-21": 0, "2026-03-28": 1, "2026-04-18": 1}}, {"name": "Петро", "attendance": {"2026-01-17": 0, "2026-01-31": 1, "2026-02-07": 0, "2026-02-14": 1, "2026-02-28": 1, "2026-03-07": 0, "2026-03-21": 1, "2026-03-28": 0, "2026-04-18": 0}}, {"name": "Руслан", "attendance": {"2026-01-17": 1, "2026-01-31": 1, "2026-02-07": 0, "2026-02-14": 1, "2026-02-28": 1, "2026-03-07": 1, "2026-03-21": 1, "2026-03-28": 1, "2026-04-18": 0}}, {"name": "Сімона", "attendance": {"2026-01-17": 0, "2026-01-31": 0, "2026-02-07": 1, "2026-02-14": 1, "2026-02-28": 1, "2026-03-07": 1, "2026-03-21": 0, "2026-03-28": 1, "2026-04-18": 1}}, {"name": "Софія", "attendance": {"2026-01-17": 0, "2026-01-31": 1, "2026-02-07": 1, "2026-02-14": 1, "2026-02-28": 1, "2026-03-07": 1, "2026-03-21": 0, "2026-03-28": 0, "2026-04-18": 1}}, {"name": "Таня Дікал", "attendance": {"2026-01-17": 0, "2026-01-31": 1, "2026-02-07": 0, "2026-02-14": 0, "2026-02-28": 0, "2026-03-07": 1, "2026-03-21": 0, "2026-03-28": 0, "2026-04-18": 1}}, {"name": "Таня Мельник", "attendance": {"2026-01-17": 1, "2026-01-31": 0, "2026-02-07": 1, "2026-02-14": 0, "2026-02-28": 1, "2026-03-07": 1, "2026-03-21": 0, "2026-03-28": 0, "2026-04-18": 0}}, {"name": "Флора", "attendance": {"2026-01-17": 1, "2026-01-31": 1, "2026-02-07": 1, "2026-02-14": 1, "2026-02-28": 0, "2026-03-07": 1, "2026-03-21": 1, "2026-03-28": 1, "2026-04-18": 1}}, {"name": "Яна", "attendance": {"2026-01-17": 1, "2026-01-31": 1, "2026-02-07": 0, "2026-02-14": 0, "2026-02-28": 0, "2026-03-07": 0, "2026-03-21": 0, "2026-03-28": 0, "2026-04-18": 0}}]}};
+
+let DATA = JSON.parse(JSON.stringify(FALLBACK_DATA)); // start with embedded
+
+async function loadSheets() {
+  // Render immediately from embedded data
+  renderAll();
+
+  // Then silently try to refresh from Google Sheets
+  try {
+    const [csv2025, csv2026] = await Promise.all([
+      fetch(SHEET_2025).then(r => { if(!r.ok) throw new Error(r.status); return r.text(); }),
+      fetch(SHEET_2026).then(r => { if(!r.ok) throw new Error(r.status); return r.text(); }),
+    ]);
+    const fresh2025 = sheetToData(csv2025);
+    const fresh2026 = sheetToData(csv2026);
+    // Only update if we got real data
+    if(fresh2025.dates.length > 0 || fresh2026.dates.length > 0) {
+      DATA = { '2025': fresh2025.dates.length ? fresh2025 : FALLBACK_DATA['2025'],
+               '2026': fresh2026.dates.length ? fresh2026 : FALLBACK_DATA['2026'] };
+      renderAll(); // re-render with live data
+      console.log('✓ Live data loaded from Google Sheets');
+    }
+  } catch(e) {
+    console.info('Using embedded data (Google Sheets unavailable locally):', e.message);
+    // Already rendered from fallback above — no error shown to user
+  }
+}
 
 // ─ State ─
 let year = '2026';
@@ -788,7 +776,7 @@ let chartInst = null;
 let modalChartInst = null;
 
 // ─ Helpers ─
-const months = ['','янв','лют','бер','кві','тра','чер','лип','сер','вер','жов','лис','гру'];
+const months = ['','Січ','Лют','Бер','Кві','Тра','Чер','Лип','Сер','Вер','Жов','Лис','Гру'];
 const fmt = d => { const p=d.split('-'); return `${p[2]}.${p[1]}`; };
 const fmtLong = d => { const p=d.split('-'); return `${+p[2]} ${months[+p[1]]} ${p[0]}`; };
 const pct = r => Math.round((r||0)*100);
@@ -1104,7 +1092,7 @@ const has2026 = DATA['2026']?.dates?.length>0;
 year = has2026?'2026':'2025';
 document.querySelectorAll('.year-btn').forEach(b=>b.classList.toggle('active',b.dataset.year===year));
 document.getElementById('hero-year').textContent = year;
-renderAll();
+loadSheets();
 
 // duplicate ticker for seamless scroll
 const ticker=document.getElementById('ticker');
@@ -1144,6 +1132,123 @@ const origRenderAll = renderAll;
 window.renderAll = function(){origRenderAll(); setTimeout(observeCards, 100);}
 setTimeout(observeCards, 300);
 
+
+// ── ЗНАЙДИ СЕБЕ ──
+const PERSONAL_QUOTES = [
+  {text:'«Не дамо припинитися нашим зустрічам, навпаки, підтримуймо одне одного дедалі дужче»', ref:'Євр. 10:25'},
+  {text:'«Погляньте, як чудово і приємно, коли брати живуть у злагоді і мирі!»', ref:'Пс. 133:1'},
+  {text:'«Господніх заповітів хто додержує — благий, до Господа всім серцем прагне — той щасливий»', ref:'Пс. 119:2'},
+];
+
+let myName = localStorage.getItem('attendance_myname') || null;
+
+function updateFindMeBtn(){
+  const btn = document.getElementById('find-me-btn');
+  const lbl = document.getElementById('find-me-label');
+  if(!btn) return;
+  if(myName){
+    lbl.textContent = myName;
+    btn.classList.add('selected');
+  } else {
+    lbl.textContent = 'Знайди себе у списку';
+    btn.classList.remove('selected');
+  }
+}
+
+function openFindMe(){
+  document.getElementById('find-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  document.getElementById('find-search').value = '';
+  renderNameList('');
+  setTimeout(()=>document.getElementById('find-search').focus(), 100);
+}
+
+function closeFindModal(e){
+  if(e && e.target !== document.getElementById('find-modal')) return;
+  document.getElementById('find-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function filterNames(q){ renderNameList(q); }
+
+function renderNameList(q){
+  const s = compute(year);
+  const list = document.getElementById('find-list');
+  const filtered = s.personStats
+    .filter(p => !q || p.name.toLowerCase().includes(q.toLowerCase()))
+    .sort((a,b) => a.name.localeCompare(b.name,'uk'));
+
+  list.innerHTML = filtered.map(p => {
+    const isSel = p.name.trim() === (myName||'').trim();
+    const rateStr = p.isInactive ? '—' : pct(p.rate||0)+'%';
+    return `<div class="find-name-item ${isSel?'selected-me':''}" onclick="selectMe('${p.name.replace(/'/g,"\'")}')">
+      <span>${p.name}</span>
+      <span class="item-rate">${rateStr}</span>
+    </div>`;
+  }).join('');
+}
+
+function selectMe(name){
+  myName = name;
+  localStorage.setItem('attendance_myname', name);
+  document.getElementById('find-modal').classList.remove('open');
+  document.body.style.overflow = '';
+  updateFindMeBtn();
+  openModal(name);
+}
+
+// Enrich modal with rank when it is "me"
+const _origOpen = openModal;
+openModal = function(name){
+  _origOpen(name);
+  if(myName && name.trim() === myName.trim()){
+    const s = compute(year);
+    const ranked = [...s.personStats]
+      .filter(p=>!p.isInactive && p.rate!==null)
+      .sort((a,b)=>(b.rate||0)-(a.rate||0));
+    const rank = ranked.findIndex(p=>p.name.trim()===name.trim())+1;
+    if(rank>0){
+      const old = document.getElementById('my-rank-badge');
+      if(old) old.remove();
+      const badge = document.createElement('div');
+      badge.id = 'my-rank-badge';
+      badge.style.cssText='display:inline-flex;align-items:center;gap:8px;background:var(--accent-dim);border:1px solid var(--accent);border-radius:100px;padding:6px 14px;font-size:13px;font-weight:600;color:var(--accent-2);margin-bottom:16px;font-family:"Geologica",sans-serif';
+      badge.innerHTML=`<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg> ${rank} місце з ${ranked.length} учасників`;
+      const mb = document.querySelector('#modal-box .modal-body');
+      if(mb) mb.insertBefore(badge, mb.firstChild);
+    }
+  }
+};
+
+document.addEventListener('keydown', e=>{if(e.key==='Escape'){closeFindModal();closeModal();}});
+setTimeout(updateFindMeBtn, 500);
+
 </script>
+
+<!-- FIND ME MODAL -->
+<div class="modal-overlay" id="find-modal" onclick="closeFindModal(event)">
+  <div class="modal" id="find-modal-box" style="max-width:480px">
+    <div class="modal-header">
+      <div>
+        <div style="font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-2);margin-bottom:6px;font-family:'Geologica',sans-serif">Хто ти?</div>
+        <div class="modal-name" style="font-size:22px">Знайди себе у списку</div>
+      </div>
+      <button class="modal-close" onclick="closeFindModal()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div style="position:relative;margin-bottom:16px">
+        <input id="find-search" type="text" placeholder="Введи своє ім'я або вибери зі списку..."
+          style="width:100%;padding:12px 16px;background:var(--surface-2);border:1px solid var(--border-2);border-radius:var(--r-sm);color:var(--text);font-family:'Golos Text',sans-serif;font-size:15px;outline:none;transition:border-color var(--t)"
+          oninput="filterNames(this.value)"
+          onfocus="this.style.borderColor='var(--accent)'"
+          onblur="this.style.borderColor='var(--border-2)'">
+      </div>
+      <div id="find-list" style="display:flex;flex-direction:column;gap:4px;max-height:320px;overflow-y:auto"></div>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
